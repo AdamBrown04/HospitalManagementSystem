@@ -28,18 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lsb_selectDB = new ListBox();
+            btn_submit = new Button();
             SuspendLayout();
+            // 
+            // lsb_selectDB
+            // 
+            lsb_selectDB.FormattingEnabled = true;
+            lsb_selectDB.Location = new Point(12, 12);
+            lsb_selectDB.Name = "lsb_selectDB";
+            lsb_selectDB.Size = new Size(301, 264);
+            lsb_selectDB.TabIndex = 0;
+            // 
+            // btn_submit
+            // 
+            btn_submit.Location = new Point(12, 282);
+            btn_submit.Name = "btn_submit";
+            btn_submit.Size = new Size(301, 65);
+            btn_submit.TabIndex = 1;
+            btn_submit.Text = "Submit";
+            btn_submit.UseVisualStyleBackColor = true;
             // 
             // selectDB
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(662, 501);
+            ClientSize = new Size(325, 352);
+            Controls.Add(btn_submit);
+            Controls.Add(lsb_selectDB);
             Name = "selectDB";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "select database";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox lsb_selectDB;
+        private Button btn_submit;
     }
 }

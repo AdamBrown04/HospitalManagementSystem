@@ -48,10 +48,10 @@
             // 
             // btn_Submit
             // 
-            btn_Submit.Font = new Font("Segoe UI", 15F);
+            btn_Submit.Font = new Font("Segoe UI", 9F);
             btn_Submit.Location = new Point(11, 192);
             btn_Submit.Name = "btn_Submit";
-            btn_Submit.Size = new Size(279, 78);
+            btn_Submit.Size = new Size(279, 53);
             btn_Submit.TabIndex = 1;
             btn_Submit.Text = "submit";
             btn_Submit.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(302, 285);
+            ClientSize = new Size(302, 253);
             Controls.Add(lbl_password);
             Controls.Add(txb_password);
             Controls.Add(lbl_username);
