@@ -1,6 +1,6 @@
 ﻿namespace HospitalManagementSystem
 {
-    partial class searchDB
+    partial class searchTable
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             textBox1 = new TextBox();
             btn_search = new Button();
-            lsb_DBrecords = new ListBox();
+            lsb_Tablerecords = new ListBox();
             btn_select = new Button();
             btn_return = new Button();
             SuspendLayout();
@@ -51,13 +51,13 @@
             btn_search.Text = "search";
             btn_search.UseVisualStyleBackColor = true;
             // 
-            // lsb_DBrecords
+            // lsb_Tablerecords
             // 
-            lsb_DBrecords.FormattingEnabled = true;
-            lsb_DBrecords.Location = new Point(12, 56);
-            lsb_DBrecords.Name = "lsb_DBrecords";
-            lsb_DBrecords.Size = new Size(776, 304);
-            lsb_DBrecords.TabIndex = 2;
+            lsb_Tablerecords.FormattingEnabled = true;
+            lsb_Tablerecords.Location = new Point(12, 56);
+            lsb_Tablerecords.Name = "lsb_Tablerecords";
+            lsb_Tablerecords.Size = new Size(776, 304);
+            lsb_Tablerecords.TabIndex = 2;
             // 
             // btn_select
             // 
@@ -77,19 +77,19 @@
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
             // 
-            // searchDB
+            // searchTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 434);
             Controls.Add(btn_return);
             Controls.Add(btn_select);
-            Controls.Add(lsb_DBrecords);
+            Controls.Add(lsb_Tablerecords);
             Controls.Add(btn_search);
             Controls.Add(textBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "searchDB";
-            Text = "search database";
+            Name = "searchTable";
+            Text = "search group";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,7 +98,7 @@
 
         private TextBox textBox1;
         private Button btn_search;
-        private ListBox lsb_DBrecords;
+        private ListBox lsb_Tablerecords;
         private Button btn_select;
         private Button btn_return;
     }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HospitalManagementSystem
 {
-    public partial class searchDB : Form
+    public partial class selectTable : Form
     {
-        public searchDB()
+        public selectTable()
         {
             InitializeComponent();
         }
