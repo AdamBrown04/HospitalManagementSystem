@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using System.Linq.Expressions;
 
 namespace HospitalManagementSystem
 {
@@ -19,12 +20,38 @@ namespace HospitalManagementSystem
 
             string uName = txb_username.Text;
             string pwd = txb_password.Text;
+            bool isCorrect = false;
 
-            string sql = "select username, password from staff";
-            DbConn conn = new DbConn();
-            conn.QueryDatabase(sql);
+            string sql = "SELECT username, password FROM staff";
+            string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
 
-            
-        }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if(uName == reader["username"] && pwd == reader["password"])
+                {
+                    isCorrect = true;
+                    break;
+                }
+            }
+
+            if (!isCorrect)
+            {
+                MessageBox.Show("INVALID LOGIN");
+            }
+            else
+            {
+                selectTable newForm = new selectTable(uName);
+                newForm.Show();
+                this.Hide();
+            }
+
+
+    }
     }
 }

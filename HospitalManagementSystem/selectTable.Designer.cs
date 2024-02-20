@@ -48,6 +48,7 @@
             btn_submit.TabIndex = 1;
             btn_submit.Text = "Submit";
             btn_submit.UseVisualStyleBackColor = true;
+            btn_submit.Click += btn_submit_Click;
             // 
             // selectTable
             // 

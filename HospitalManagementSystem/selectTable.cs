@@ -12,9 +12,14 @@ namespace HospitalManagementSystem
 {
     public partial class selectTable : Form
     {
-        public selectTable()
+        public selectTable(string currentUsername)
         {
             InitializeComponent();
+        }
+
+        private void btn_submit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
