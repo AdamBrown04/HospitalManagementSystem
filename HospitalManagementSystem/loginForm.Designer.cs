@@ -55,6 +55,7 @@
             btn_Submit.TabIndex = 1;
             btn_Submit.Text = "submit";
             btn_Submit.UseVisualStyleBackColor = true;
+            btn_Submit.Click += btn_Submit_Click;
             // 
             // txb_username
             // 
