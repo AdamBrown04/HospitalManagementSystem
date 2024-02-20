@@ -22,6 +22,9 @@ namespace HospitalManagementSystem
             string pwd = txb_password.Text;
             bool isCorrect = false;
 
+            string dbUsername;
+            string dbPassword;
+
             string sql = "SELECT username, password FROM staff";
             string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
 
@@ -35,7 +38,10 @@ namespace HospitalManagementSystem
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if(uName == reader["username"] && pwd == reader["password"])
+                dbUsername = reader["username"].ToString();
+                dbPassword = reader["password"].ToString();
+
+                if(uName == dbUsername && pwd == dbPassword)
                 {
                     isCorrect = true;
                     break;
@@ -52,8 +58,6 @@ namespace HospitalManagementSystem
                 newForm.Show();
                 this.Hide();
             }
-
-
-    }
+        }
     }
 }
