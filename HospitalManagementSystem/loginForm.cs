@@ -25,6 +25,8 @@ namespace HospitalManagementSystem
             string sql = "SELECT username, password FROM staff";
             string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
 
+            txb_username.Clear();
+            txb_password.Clear();
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
