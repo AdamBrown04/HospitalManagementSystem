@@ -14,6 +14,7 @@ namespace HospitalManagementSystem
     public partial class selectTable : Form
     {
         string username;
+        string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
         public selectTable(string currentUsername)
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace HospitalManagementSystem
             List<string> tableNames = new List<string>();
 
             string sql = "SHOW TABLES";
-            string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
+            
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
@@ -53,7 +54,41 @@ namespace HospitalManagementSystem
 
         private List<string> allowedTables(List<string> allTables)
         {
-            
+            int accessLevel = -1;
+            string sql = $"SELECT accessLevel FROM staff WHERE username = {username}";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                accessLevel = Convert.ToInt32(reader["accessLevel"]);
+            }
+
+            switch(accessLevel)
+            {
+                case 1: //system admin
+                    break;
+                case 2: //dep head
+                    break;
+                case 3: //receptionist
+                    break;
+                case 4: //admin/other staff
+                    break;
+                case 5: //doctor
+                    break;
+                case 6: //paramedic
+                    break;
+                case 7: //amb op
+                    break;
+                case 8: //lab tech
+                    break;
+                case 9: //med staff
+                    break;
+            }
+
             return allTables;
         }
     }
