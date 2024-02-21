@@ -61,6 +61,7 @@
             Name = "selectTable";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "select group";
+            Load += selectTable_Load;
             ResumeLayout(false);
         }
 

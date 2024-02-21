@@ -38,10 +38,12 @@ namespace HospitalManagementSystem
             con.Open();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             MySqlDataReader reader = cmd.ExecuteReader();
-            foreach(string tableName in reader)
+            while (reader.Read())
             {
-                tableNames.Add(tableName);
+                tableNames.Add(reader["Tables_in_hospitalmanagementsystem"].ToString());
             }
+
+            allowedTables(tableNames);
 
             foreach(string tableName in tableNames)
             {
@@ -49,12 +51,10 @@ namespace HospitalManagementSystem
             }
         }
 
-        private List<string> allowedTables()
+        private List<string> allowedTables(List<string> allTables)
         {
-            List<string> tables = new List<string>();
-
-
-                return tables;
+            
+            return allTables;
         }
     }
 }
