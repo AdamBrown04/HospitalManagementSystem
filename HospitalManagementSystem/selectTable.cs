@@ -25,5 +25,36 @@ namespace HospitalManagementSystem
         {
 
         }
+
+        private void selectTable_Load(object sender, EventArgs e)
+        {
+            List<string> tableNames = new List<string>();
+
+            string sql = "SHOW TABLES";
+            string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            foreach(string tableName in reader)
+            {
+                tableNames.Add(tableName);
+            }
+
+            foreach(string tableName in tableNames)
+            {
+                lsb_selectTable.Items.Add(tableName);
+            }
+        }
+
+        private List<string> allowedTables()
+        {
+            List<string> tables = new List<string>();
+
+
+                return tables;
+        }
     }
 }
