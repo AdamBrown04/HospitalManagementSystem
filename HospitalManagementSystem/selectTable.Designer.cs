@@ -39,6 +39,7 @@
             lsb_selectTable.Name = "lsb_selectTable";
             lsb_selectTable.Size = new Size(301, 264);
             lsb_selectTable.TabIndex = 0;
+            lsb_selectTable.SelectedIndexChanged += lsb_selectTable_SelectedIndexChanged;
             // 
             // btn_submit
             // 

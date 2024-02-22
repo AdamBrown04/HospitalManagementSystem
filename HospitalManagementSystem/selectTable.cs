@@ -13,6 +13,7 @@ namespace HospitalManagementSystem
 {
     public partial class selectTable : Form
     {
+        int currentIndex = -1;
         string username;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
         public selectTable(string currentUsername)
@@ -105,6 +106,15 @@ namespace HospitalManagementSystem
         private void selectTable_FormClosed(object sender, FormClosedEventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void lsb_selectTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentIndex = lsb_selectTable.SelectedIndex;
+            if(currentIndex != -1)
+            {
+                btn_submit.Enabled = true;
+            }
         }
     }
 }
