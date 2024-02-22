@@ -32,7 +32,7 @@ namespace HospitalManagementSystem
 
             List<string> tableNames = allowedTables();
 
-            foreach(string tableName in tableNames)
+            foreach (string tableName in tableNames)
             {
                 lsb_selectTable.Items.Add(tableName);
             }
@@ -55,7 +55,7 @@ namespace HospitalManagementSystem
                 accessLevel = Convert.ToInt32(reader["accessLevel"]);
             }
 
-            switch(accessLevel)
+            switch (accessLevel)
             {
                 case 1: //system admin
                     tables.Add("patientdetails");
@@ -80,6 +80,11 @@ namespace HospitalManagementSystem
             }
 
             return tables;
+        }
+
+        private void selectTable_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
