@@ -13,6 +13,7 @@ namespace HospitalManagementSystem
 {
     public partial class searchTable : Form
     {
+        int currentIndex = -1;
         string tName;
         string uName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -47,6 +48,15 @@ namespace HospitalManagementSystem
             while (reader.Read())
             {
                 lsb_Tablerecords.Items.Add($"ID: {reader[$"{tName}id"]}");
+            }
+        }
+
+        private void lsb_Tablerecords_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentIndex = lsb_Tablerecords.SelectedIndex;
+            if (currentIndex != -1)
+            {
+                btn_select.Enabled = true;
             }
         }
     }

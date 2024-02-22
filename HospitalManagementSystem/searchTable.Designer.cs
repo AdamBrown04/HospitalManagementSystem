@@ -58,9 +58,11 @@
             lsb_Tablerecords.Name = "lsb_Tablerecords";
             lsb_Tablerecords.Size = new Size(776, 304);
             lsb_Tablerecords.TabIndex = 2;
+            lsb_Tablerecords.SelectedIndexChanged += lsb_Tablerecords_SelectedIndexChanged;
             // 
             // btn_select
             // 
+            btn_select.Enabled = false;
             btn_select.Location = new Point(12, 366);
             btn_select.Name = "btn_select";
             btn_select.Size = new Size(371, 58);
