@@ -60,22 +60,42 @@ namespace HospitalManagementSystem
                 case 1: //system admin
                     tables.Add("patientdetails");
                     tables.Add("staff");
+                    tables.Add("jobs");
+                    tables.Add("department");
+                    tables.Add("hospital");
                     break;
                 case 2: //dep head
+                    tables.Add("patientdetails");
+                    tables.Add("staff");
+                    tables.Add("jobs");
                     break;
                 case 3: //receptionist
+                    tables.Add("patientdetails");
+                    tables.Add("appointment");
                     break;
                 case 4: //admin/other staff
+                    tables.Add("patientdetails");
                     break;
                 case 5: //doctor
+                    tables.Add("patientrecords");
+                    tables.Add("daignosis");
+                    tables.Add("test");
                     break;
                 case 6: //paramedic
+                    tables.Add("patientrecords");
+                    tables.Add("daignosis");
                     break;
-                case 7: //amb op
+                case 7: //nurse
+                    tables.Add("patientrecords");
+                    tables.Add("test");
+                    tables.Add("diagnosis");
                     break;
                 case 8: //lab tech
+                    tables.Add("patientrecords");
+                    tables.Add("test");
                     break;
                 case 9: //med staff
+                    tables.Add("patientrecords");
                     break;
             }
 
