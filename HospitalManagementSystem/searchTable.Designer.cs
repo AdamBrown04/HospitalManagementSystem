@@ -91,6 +91,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "searchTable";
             Text = "search group";
+            FormClosed += searchTable_FormClosed;
+            Load += searchTable_Load;
             ResumeLayout(false);
             PerformLayout();
         }

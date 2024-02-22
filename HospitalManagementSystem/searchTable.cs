@@ -14,6 +14,7 @@ namespace HospitalManagementSystem
     {
         string tName;
         string uName;
+        string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
         public searchTable(string tableName, string username)
         {
             InitializeComponent();
@@ -26,6 +27,16 @@ namespace HospitalManagementSystem
             selectTable newForm = new selectTable(uName);
             newForm.Show();
             this.Hide();
+        }
+
+        private void searchTable_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void searchTable_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
