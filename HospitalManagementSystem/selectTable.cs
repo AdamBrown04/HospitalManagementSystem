@@ -40,8 +40,10 @@ namespace HospitalManagementSystem
 
         private List<string> allowedTables()
         {
+            List<string> tables = new List<string>();
+
             int accessLevel = -1;
-            string sql = $"SELECT accessLevel FROM staff WHERE username = {username}";
+            string sql = $"SELECT accessLevel FROM staff WHERE username = '{username}'";
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
@@ -56,6 +58,8 @@ namespace HospitalManagementSystem
             switch(accessLevel)
             {
                 case 1: //system admin
+                    tables.Add("patientdetails");
+                    tables.Add("staff");
                     break;
                 case 2: //dep head
                     break;
@@ -75,7 +79,7 @@ namespace HospitalManagementSystem
                     break;
             }
 
-            return allTables;
+            return tables;
         }
     }
 }
