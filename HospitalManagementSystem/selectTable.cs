@@ -29,22 +29,8 @@ namespace HospitalManagementSystem
 
         private void selectTable_Load(object sender, EventArgs e)
         {
-            List<string> tableNames = new List<string>();
 
-            string sql = "SHOW TABLES";
-            
-
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connectionString;
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                tableNames.Add(reader["Tables_in_hospitalmanagementsystem"].ToString());
-            }
-
-            allowedTables(tableNames);
+            List<string> tableNames = allowedTables();
 
             foreach(string tableName in tableNames)
             {
@@ -52,7 +38,7 @@ namespace HospitalManagementSystem
             }
         }
 
-        private List<string> allowedTables(List<string> allTables)
+        private List<string> allowedTables()
         {
             int accessLevel = -1;
             string sql = $"SELECT accessLevel FROM staff WHERE username = {username}";
