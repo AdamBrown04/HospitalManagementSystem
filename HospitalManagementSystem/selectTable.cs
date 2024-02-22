@@ -16,6 +16,7 @@ namespace HospitalManagementSystem
         int currentIndex = -1;
         string username;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
+        List<string> tableNames = new List<string>();
         public selectTable(string currentUsername)
         {
             InitializeComponent();
@@ -25,13 +26,15 @@ namespace HospitalManagementSystem
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-
+            searchTable newForm = new searchTable(tableNames[currentIndex], username);
+            newForm.Show();
+            this.Hide();
         }
 
         private void selectTable_Load(object sender, EventArgs e)
         {
 
-            List<string> tableNames = allowedTables();
+            tableNames = allowedTables();
 
             foreach (string tableName in tableNames)
             {

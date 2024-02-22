@@ -76,6 +76,7 @@
             btn_return.TabIndex = 4;
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
+            btn_return.Click += btn_return_Click;
             // 
             // searchTable
             // 
