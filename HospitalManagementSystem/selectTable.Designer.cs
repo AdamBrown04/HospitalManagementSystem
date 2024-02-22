@@ -42,6 +42,7 @@
             // 
             // btn_submit
             // 
+            btn_submit.Enabled = false;
             btn_submit.Location = new Point(12, 282);
             btn_submit.Name = "btn_submit";
             btn_submit.Size = new Size(301, 65);
