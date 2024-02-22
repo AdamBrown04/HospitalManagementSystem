@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +37,17 @@ namespace HospitalManagementSystem
 
         private void searchTable_Load(object sender, EventArgs e)
         {
+            string sql = $"SELECT * FROM {tName}";
 
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                lsb_Tablerecords.Items.Add($"ID: {reader[$"{tName}id"]}");
+            }
         }
     }
 }
