@@ -47,8 +47,40 @@ namespace HospitalManagementSystem
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                lsb_Tablerecords.Items.Add($"ID: {reader[$"{tName}id"]}");
+                lsb_Tablerecords.Items.Add(DisplayRecord(reader));
             }
+        }
+
+        private string DisplayRecord(MySqlDataReader reader) 
+        {
+            string itemName;
+
+            switch (tName)
+            {
+                case "staff":
+                    itemName = $"id: {reader[$"{tName}id"]} name: {reader["firstName"]} {reader["lastName"]}";
+                    break;
+                case "jobs":
+                    break;
+                case "hospital":
+                    break;
+                case "appoitment":
+                    break;
+                case "department":
+                    break;
+                case "diagnosis":
+                    break;
+                case "patientdetials":
+                    break;
+                case "patientrecords":
+                    break;
+                case "test":
+                    break;
+            }
+
+
+            return itemName;
+
         }
 
         private void lsb_Tablerecords_SelectedIndexChanged(object sender, EventArgs e)
