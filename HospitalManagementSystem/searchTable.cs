@@ -40,6 +40,13 @@ namespace HospitalManagementSystem
         {
             string sql = $"SELECT * FROM {tName}";
 
+            switch (tName) 
+            {
+                case "patientrecords":
+                    sql = sql + " INNER JOIN patientDetails ON (patientdetails.patientDetailsID)";
+                    break;
+            }
+
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
             con.Open();
@@ -79,7 +86,7 @@ namespace HospitalManagementSystem
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "patientrecords":
-                    itemName = itemName + $": {reader[""]} ";
+                    itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "test":
                     itemName = itemName + $": {reader[""]} ";
@@ -101,3 +108,4 @@ namespace HospitalManagementSystem
         }
     }
 }
+//SELECT * FROM `patientrecords` INNER JOIN patientDetails ON (patientdetails.patientDetailsID)
