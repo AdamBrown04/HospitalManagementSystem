@@ -53,28 +53,36 @@ namespace HospitalManagementSystem
 
         private string DisplayRecord(MySqlDataReader reader) 
         {
-            string itemName;
+            string itemName = itemName = $"id: {reader[$"{tName}id"]} ";
 
             switch (tName)
             {
                 case "staff":
-                    itemName = $"id: {reader[$"{tName}id"]} name: {reader["firstName"]} {reader["lastName"]}";
+                    itemName = itemName + $"name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "jobs":
+                    itemName = itemName + $"job name: {reader["jobName"]}";
                     break;
                 case "hospital":
+                    itemName = itemName+ $": {reader[""]} ";
                     break;
                 case "appoitment":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
                 case "department":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
                 case "diagnosis":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
                 case "patientdetials":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
                 case "patientrecords":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
                 case "test":
+                    itemName = itemName + $": {reader[""]} ";
                     break;
             }
 
