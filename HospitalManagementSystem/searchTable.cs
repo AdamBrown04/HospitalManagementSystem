@@ -43,7 +43,16 @@ namespace HospitalManagementSystem
             switch (tName) 
             {
                 case "patientrecords":
-                    sql = sql + " INNER JOIN patientDetails ON (patientdetails.patientDetailsID)";
+                    sql = sql + " INNER JOIN patientDetails ON (patientdetails.patientDetailsID)  = patientrecords.patientDetailsID";
+                    break;
+                case "diagnosis":
+                    sql = sql + " INNER JOIN  ON (.  = .)";
+                    break;
+                case "appointment":
+                    sql = sql + " INNER JOIN  ON (.  = .)";
+                    break;
+                case "test":
+                    sql = sql + " INNER JOIN  ON (.  = .)";
                     break;
             }
 
