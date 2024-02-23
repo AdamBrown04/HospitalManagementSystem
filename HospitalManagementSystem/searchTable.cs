@@ -53,7 +53,7 @@ namespace HospitalManagementSystem
 
         private string DisplayRecord(MySqlDataReader reader) 
         {
-            string itemName = itemName = $"id: {reader[$"{tName}id"]} ";
+            string itemName = $"id: {reader[$"{tName}id"]} ";
 
             switch (tName)
             {
