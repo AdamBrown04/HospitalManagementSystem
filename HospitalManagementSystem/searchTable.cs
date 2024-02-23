@@ -64,19 +64,19 @@ namespace HospitalManagementSystem
                     itemName = itemName + $"job name: {reader["jobName"]}";
                     break;
                 case "hospital":
-                    itemName = itemName+ $": {reader[""]} ";
+                    itemName = itemName+ $"hospital name: {reader["hospitalName"]} ";
                     break;
                 case "appoitment":
                     itemName = itemName + $": {reader[""]} ";
                     break;
                 case "department":
-                    itemName = itemName + $": {reader[""]} ";
+                    itemName = itemName + $"department name: {reader["departmentName"]} ";
                     break;
                 case "diagnosis":
                     itemName = itemName + $": {reader[""]} ";
                     break;
                 case "patientdetials":
-                    itemName = itemName + $": {reader[""]} ";
+                    itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "patientrecords":
                     itemName = itemName + $": {reader[""]} ";
