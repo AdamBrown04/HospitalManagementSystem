@@ -73,9 +73,9 @@
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(511, 366);
+            btn_return.Location = new Point(527, 366);
             btn_return.Name = "btn_return";
-            btn_return.Size = new Size(277, 58);
+            btn_return.Size = new Size(261, 58);
             btn_return.TabIndex = 4;
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             btn_addNewEntry.Enabled = false;
             btn_addNewEntry.Location = new Point(263, 366);
             btn_addNewEntry.Name = "btn_addNewEntry";
-            btn_addNewEntry.Size = new Size(242, 58);
+            btn_addNewEntry.Size = new Size(258, 58);
             btn_addNewEntry.TabIndex = 5;
             btn_addNewEntry.Text = "add new entry";
             btn_addNewEntry.UseVisualStyleBackColor = true;
