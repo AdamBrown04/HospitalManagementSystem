@@ -52,7 +52,7 @@ namespace HospitalManagementSystem
                     sql = sql + " INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID)";
                     break;
                 case "test":
-                    sql = sql + " INNER JOIN  ON (.  = .)";
+                    sql = sql + " INNER JOIN staff ON (staff.staffID = test.staffID)";
                     break;
             }
 
@@ -98,7 +98,7 @@ namespace HospitalManagementSystem
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "test":
-                    itemName = itemName + $": {reader[""]} ";
+                    itemName = itemName + $"test name: {reader["testName"]} member of staff: {reader["firstName"]} {reader["lastName"]}";
                     break;
             }
 
