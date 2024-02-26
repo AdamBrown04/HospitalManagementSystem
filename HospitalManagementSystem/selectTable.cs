@@ -82,12 +82,12 @@ namespace HospitalManagementSystem
                     break;
                 case 5: //doctor
                     tables.Add("patientrecords");
-                    tables.Add("daignosis");
+                    tables.Add("diagnosis");
                     tables.Add("test");
                     break;
                 case 6: //paramedic
                     tables.Add("patientrecords");
-                    tables.Add("daignosis");
+                    tables.Add("diagnosis");
                     break;
                 case 7: //nurse
                     tables.Add("patientrecords");
