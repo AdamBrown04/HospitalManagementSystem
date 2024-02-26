@@ -33,6 +33,7 @@
             lsb_Tablerecords = new ListBox();
             btn_select = new Button();
             btn_return = new Button();
+            btn_addNewEntry = new Button();
             SuspendLayout();
             // 
             // textBox1
@@ -65,26 +66,37 @@
             btn_select.Enabled = false;
             btn_select.Location = new Point(12, 366);
             btn_select.Name = "btn_select";
-            btn_select.Size = new Size(371, 58);
+            btn_select.Size = new Size(245, 58);
             btn_select.TabIndex = 3;
             btn_select.Text = "select";
             btn_select.UseVisualStyleBackColor = true;
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(389, 366);
+            btn_return.Location = new Point(511, 366);
             btn_return.Name = "btn_return";
-            btn_return.Size = new Size(399, 58);
+            btn_return.Size = new Size(277, 58);
             btn_return.TabIndex = 4;
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
+            // 
+            // btn_addNewEntry
+            // 
+            btn_addNewEntry.Enabled = false;
+            btn_addNewEntry.Location = new Point(263, 366);
+            btn_addNewEntry.Name = "btn_addNewEntry";
+            btn_addNewEntry.Size = new Size(242, 58);
+            btn_addNewEntry.TabIndex = 5;
+            btn_addNewEntry.Text = "add new entry";
+            btn_addNewEntry.UseVisualStyleBackColor = true;
             // 
             // searchTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 434);
+            Controls.Add(btn_addNewEntry);
             Controls.Add(btn_return);
             Controls.Add(btn_select);
             Controls.Add(lsb_Tablerecords);
@@ -106,5 +118,6 @@
         private ListBox lsb_Tablerecords;
         private Button btn_select;
         private Button btn_return;
+        private Button btn_addNewEntry;
     }
 }
