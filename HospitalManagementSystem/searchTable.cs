@@ -70,23 +70,47 @@ namespace HospitalManagementSystem
 
             switch (aLevel) 
             {
-                case 1:
+                case 1: //sys admin
+                    if (tName == "patientdetails" || tName == "jobs" || tName == "hospital" || tName == "department")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break; 
-                case 2:
+                case 2://dep head
+                    if (tName == "staff" || tName == "jobs")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
-                case 3:
+                case 3://receptionist
+                    if (tName == "appointment" || tName == "patientdetails")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
-                case 4:
+                case 5://doctor
+                    if (tName == "")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
-                case 5:
+                case 6://para
+                    if (tName == "")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
-                case 6:
+                case 7://nurse
+                    if (tName == "")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
-                case 7:
-                     break;
-                case 8:
-                    break;
-                case 9:
+                case 8://lab tech
+                    if (tName == "")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
                     break;
             }
         }
@@ -115,7 +139,7 @@ namespace HospitalManagementSystem
                 case "diagnosis":
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
-                case "patientdetials":
+                case "patientdetails":
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "patientrecords":
