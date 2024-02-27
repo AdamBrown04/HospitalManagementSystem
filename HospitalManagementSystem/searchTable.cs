@@ -16,12 +16,14 @@ namespace HospitalManagementSystem
         int currentIndex = -1;
         string tName;
         string uName;
+        int aLevel;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
-        public searchTable(string tableName, string username)
+        public searchTable(string tableName, string username, int accessLevel)
         {
             InitializeComponent();
             tName = tableName;
             uName = username;
+            aLevel = accessLevel;
         }
 
         private void btn_return_Click(object sender, EventArgs e)
@@ -64,6 +66,28 @@ namespace HospitalManagementSystem
             while (reader.Read())
             {
                 lsb_Tablerecords.Items.Add(DisplayRecord(reader));
+            }
+
+            switch (aLevel) 
+            {
+                case 1:
+                    break; 
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                     break;
+                case 8:
+                    break;
+                case 9:
+                    break;
             }
         }
 

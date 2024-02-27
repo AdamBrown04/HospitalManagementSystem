@@ -13,6 +13,7 @@ namespace HospitalManagementSystem
 {
     public partial class selectTable : Form
     {
+        int accessLevel = -1;
         int currentIndex = -1;
         string username;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -26,7 +27,7 @@ namespace HospitalManagementSystem
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            searchTable newForm = new searchTable(tableNames[currentIndex], username);
+            searchTable newForm = new searchTable(tableNames[currentIndex], username ,accessLevel);
             newForm.Show();
             this.Hide();
         }
@@ -46,7 +47,6 @@ namespace HospitalManagementSystem
         {
             List<string> tables = new List<string>();
 
-            int accessLevel = -1;
             string sql = $"SELECT accessLevel FROM staff WHERE username = '{username}'";
 
             MySqlConnection con = new MySqlConnection();
