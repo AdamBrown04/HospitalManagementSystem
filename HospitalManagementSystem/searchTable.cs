@@ -89,25 +89,31 @@ namespace HospitalManagementSystem
                     }
                     break;
                 case 5://doctor
-                    if (tName == "")
+                    if (tName == "diagnosis" || tName == "patientrecords")
                     {
                         btn_addNewEntry.Enabled = true;
                     }
                     break;
                 case 6://para
-                    if (tName == "")
+                    if (tName == "diagnosis" || tName == "patientrecords")
                     {
                         btn_addNewEntry.Enabled = true;
                     }
                     break;
                 case 7://nurse
-                    if (tName == "")
+                    if (tName == "patientrecords")
                     {
                         btn_addNewEntry.Enabled = true;
                     }
                     break;
                 case 8://lab tech
-                    if (tName == "")
+                    if (tName == "test" || tName == "patientrecords")
+                    {
+                        btn_addNewEntry.Enabled = true;
+                    }
+                    break;
+                case 9: //med staff
+                    if (tName == "patientrecords")
                     {
                         btn_addNewEntry.Enabled = true;
                     }
