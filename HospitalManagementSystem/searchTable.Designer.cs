@@ -70,6 +70,7 @@
             btn_select.TabIndex = 3;
             btn_select.Text = "select";
             btn_select.UseVisualStyleBackColor = true;
+            btn_select.Click += btn_select_Click;
             // 
             // btn_return
             // 
