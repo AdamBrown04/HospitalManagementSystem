@@ -7,14 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Mysqlx.Notice.Warning.Types;
 
 namespace HospitalManagementSystem
 {
     public partial class viewDiagnosis : Form
     {
-        public viewDiagnosis()
+        int recordIDnumber;
+        int aLevel;
+        string uName;
+        string tName;
+        public viewDiagnosis(int recordID, string tableName, string username, int accessLevel)
         {
             InitializeComponent();
+
+            recordIDnumber = recordID;
+            aLevel = accessLevel;
+            uName = username;
+            tName = tableName;
+        }
+
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            searchTable newForm = new searchTable(tName, uName, aLevel);
+            newForm.Show();
+            this.Hide();
         }
     }
 }

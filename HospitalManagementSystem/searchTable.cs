@@ -175,47 +175,47 @@ namespace HospitalManagementSystem
             switch (tName) 
             {
                 case "staff":
-                    viewStaff staffForm = new viewStaff();
+                    viewStaff staffForm = new viewStaff(currentIndex, tName, uName, aLevel);
                     staffForm.Show();
                     this.Hide();
                     break;
                 case "jobs":
-                    viewJobs jobsForms = new viewJobs();
+                    viewJobs jobsForms = new viewJobs(currentIndex, tName, uName, aLevel);
                     jobsForms.Show();
                     this.Hide();
                     break;
                 case "hospital":
-                    viewHospital hospitalForm = new viewHospital();
+                    viewHospital hospitalForm = new viewHospital(currentIndex, tName, uName, aLevel);
                     hospitalForm.Show();
                     this.Hide();
                     break;
                 case "appointment":
-                    viewAppointments appointmentForm = new viewAppointments();
+                    viewAppointments appointmentForm = new viewAppointments(currentIndex, tName, uName, aLevel);
                     appointmentForm.Show();
                     this.Hide();
                     break;
                 case "department":
-                    viewDepartment departmentForm = new viewDepartment();
+                    viewDepartment departmentForm = new viewDepartment(currentIndex, tName, uName, aLevel);
                     departmentForm.Show();
                     this.Hide();
                     break;
                 case "diagnosis":
-                    viewDiagnosis daignosisForm = new viewDiagnosis();
+                    viewDiagnosis daignosisForm = new viewDiagnosis(currentIndex, tName, uName, aLevel);
                     daignosisForm.Show();
                     this.Hide();
                     break;
                 case "patientdetails":
-                    viewPatientDetails patientdetailsForm = new viewPatientDetails();
+                    viewPatientDetails patientdetailsForm = new viewPatientDetails(currentIndex, tName, uName, aLevel);
                     patientdetailsForm.Show();
                     this.Hide();
                     break;
                 case "patientrecords":
-                    viewPatientRecord patientrecordsForm = new viewPatientRecord();
+                    viewPatientRecord patientrecordsForm = new viewPatientRecord(currentIndex, tName, uName, aLevel);
                     patientrecordsForm.Show();
                     this.Hide();
                     break;
                 case "test":
-                    viewTest testForm = new viewTest();
+                    viewTest testForm = new viewTest(currentIndex, tName, uName, aLevel);
                     testForm.Show();
                     this.Hide();
                     break;

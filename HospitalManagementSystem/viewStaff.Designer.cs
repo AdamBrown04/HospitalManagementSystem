@@ -43,7 +43,7 @@
             lbl_phoneNumber = new Label();
             txb_phoneNumber = new TextBox();
             btn_saveChanges = new Button();
-            button2 = new Button();
+            btn_return = new Button();
             lbl_accessLevel = new Label();
             txb_accessLevel = new TextBox();
             SuspendLayout();
@@ -170,14 +170,15 @@
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_return
             // 
-            button2.Location = new Point(10, 439);
-            button2.Name = "button2";
-            button2.Size = new Size(344, 53);
-            button2.TabIndex = 15;
-            button2.Text = "return to menu";
-            button2.UseVisualStyleBackColor = true;
+            btn_return.Location = new Point(10, 439);
+            btn_return.Name = "btn_return";
+            btn_return.Size = new Size(344, 53);
+            btn_return.TabIndex = 15;
+            btn_return.Text = "return to menu";
+            btn_return.UseVisualStyleBackColor = true;
+            btn_return.Click += btn_return_Click;
             // 
             // lbl_accessLevel
             // 
@@ -199,10 +200,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(366, 518);
+            ClientSize = new Size(366, 501);
             Controls.Add(txb_accessLevel);
             Controls.Add(lbl_accessLevel);
-            Controls.Add(button2);
+            Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_phoneNumber);
             Controls.Add(lbl_phoneNumber);
@@ -241,7 +242,7 @@
         private Label lbl_phoneNumber;
         private TextBox txb_phoneNumber;
         private Button btn_saveChanges;
-        private Button button2;
+        private Button btn_return;
         private Label lbl_accessLevel;
         private TextBox txb_accessLevel;
     }

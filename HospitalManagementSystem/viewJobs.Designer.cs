@@ -85,6 +85,7 @@
             btn_return.TabIndex = 5;
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
+            btn_return.Click += btn_return_Click;
             // 
             // viewJobs
             // 

@@ -158,6 +158,7 @@
             btn_return.TabIndex = 13;
             btn_return.Text = "return to menu";
             btn_return.UseVisualStyleBackColor = true;
+            btn_return.Click += btn_return_Click;
             // 
             // viewPatientDetails
             // 
