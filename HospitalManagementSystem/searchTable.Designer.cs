@@ -90,6 +90,7 @@
             btn_addNewEntry.TabIndex = 5;
             btn_addNewEntry.Text = "add new entry";
             btn_addNewEntry.UseVisualStyleBackColor = true;
+            btn_addNewEntry.Click += btn_addNewEntry_Click;
             // 
             // searchTable
             // 

@@ -42,7 +42,7 @@ namespace HospitalManagementSystem
         {
             string sql = $"SELECT * FROM {tName}";
 
-            switch (tName) 
+            switch (tName)
             {
                 case "patientrecords":
                     sql = sql + " INNER JOIN patientDetails ON (patientdetails.patientDetailsID)  = patientrecords.patientDetailsID";
@@ -68,14 +68,14 @@ namespace HospitalManagementSystem
                 lsb_Tablerecords.Items.Add(DisplayRecord(reader));
             }
 
-            switch (aLevel) 
+            switch (aLevel)
             {
                 case 1: //sys admin
                     if (tName == "patientdetails" || tName == "jobs" || tName == "hospital" || tName == "department")
                     {
                         btn_addNewEntry.Enabled = true;
                     }
-                    break; 
+                    break;
                 case 2://dep head
                     if (tName == "staff" || tName == "jobs")
                     {
@@ -121,7 +121,7 @@ namespace HospitalManagementSystem
             }
         }
 
-        private string DisplayRecord(MySqlDataReader reader) 
+        private string DisplayRecord(MySqlDataReader reader)
         {
             string itemName = $"id: {reader[$"{tName}id"]} ";
 
@@ -134,7 +134,7 @@ namespace HospitalManagementSystem
                     itemName = itemName + $"job name: {reader["jobName"]}";
                     break;
                 case "hospital":
-                    itemName = itemName+ $"hospital name: {reader["hospitalName"]} ";
+                    itemName = itemName + $"hospital name: {reader["hospitalName"]} ";
                     break;
                 case "appointment":
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]} hospital name: {reader["hospitalName"]} date: {reader["appointmentDate"]}";
@@ -169,6 +169,31 @@ namespace HospitalManagementSystem
                 btn_select.Enabled = true;
             }
         }
+
+        private void btn_addNewEntry_Click(object sender, EventArgs e)
+        {
+            switch (tName) 
+            {
+                case "staff":
+                    break;
+                case "jobs":
+                    break;
+                case "hospital":
+                    break;
+                case "appointment":
+                    break;
+                case "department":
+                    break;
+                case "diagnosis":
+                    break;
+                case "patientdetails":
+                    break;
+                case "patientrecords":
+                    break;
+                case "test":
+                    break;
+            }
+
+        }
     }
 }
-//SELECT * FROM `patientrecords` INNER JOIN patientDetails ON (patientdetails.patientDetailsID)
