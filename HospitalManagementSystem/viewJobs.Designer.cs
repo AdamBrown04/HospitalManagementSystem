@@ -98,7 +98,7 @@
             Controls.Add(textBox1);
             Controls.Add(lbl_jobName);
             Name = "viewJobs";
-            Text = "viewJobs";
+            Text = "view Job";
             ResumeLayout(false);
             PerformLayout();
         }
