@@ -42,7 +42,7 @@ namespace HospitalManagementSystem
 
         private void viewAppointments_Load(object sender, EventArgs e)
         {
-            if(recordIDnumber != -1)
+            if (recordIDnumber != -1)
             {
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID) WHERE appointmentID = '{recordIDnumber}'";
 
@@ -60,7 +60,11 @@ namespace HospitalManagementSystem
                     txb_time.Text = $"{reader["appointmentTime"]}";
                 }
             }
-            else
+        }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+            if ()
             {
 
             }
