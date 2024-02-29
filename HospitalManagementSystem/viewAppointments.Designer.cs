@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             lbl_Pname = new Label();
-            textBox1 = new TextBox();
-            lbl_Dname = new Label();
-            textBox2 = new TextBox();
+            txb_pName = new TextBox();
+            lbl_hName = new Label();
+            txb_hName = new TextBox();
             lbl_date = new Label();
             txb_date = new TextBox();
             lbl_time = new Label();
-            textBox3 = new TextBox();
-            lbl_location = new Label();
-            textBox4 = new TextBox();
+            txb_time = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             SuspendLayout();
@@ -51,28 +49,28 @@
             lbl_Pname.TabIndex = 0;
             lbl_Pname.Text = "patient's name:";
             // 
-            // textBox1
+            // txb_pName
             // 
-            textBox1.Location = new Point(127, 9);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(220, 27);
-            textBox1.TabIndex = 1;
+            txb_pName.Location = new Point(127, 9);
+            txb_pName.Name = "txb_pName";
+            txb_pName.Size = new Size(220, 27);
+            txb_pName.TabIndex = 1;
             // 
-            // lbl_Dname
+            // lbl_hName
             // 
-            lbl_Dname.AutoSize = true;
-            lbl_Dname.Location = new Point(12, 54);
-            lbl_Dname.Name = "lbl_Dname";
-            lbl_Dname.Size = new Size(106, 20);
-            lbl_Dname.TabIndex = 2;
-            lbl_Dname.Text = "doctor's name:";
+            lbl_hName.AutoSize = true;
+            lbl_hName.Location = new Point(12, 54);
+            lbl_hName.Name = "lbl_hName";
+            lbl_hName.Size = new Size(106, 20);
+            lbl_hName.TabIndex = 2;
+            lbl_hName.Text = "hospital name:";
             // 
-            // textBox2
+            // txb_hName
             // 
-            textBox2.Location = new Point(127, 51);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(220, 27);
-            textBox2.TabIndex = 3;
+            txb_hName.Location = new Point(127, 51);
+            txb_hName.Name = "txb_hName";
+            txb_hName.Size = new Size(220, 27);
+            txb_hName.TabIndex = 3;
             // 
             // lbl_date
             // 
@@ -99,32 +97,16 @@
             lbl_time.TabIndex = 6;
             lbl_time.Text = "time:";
             // 
-            // textBox3
+            // txb_time
             // 
-            textBox3.Location = new Point(60, 143);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(287, 27);
-            textBox3.TabIndex = 7;
-            // 
-            // lbl_location
-            // 
-            lbl_location.AutoSize = true;
-            lbl_location.Location = new Point(12, 195);
-            lbl_location.Name = "lbl_location";
-            lbl_location.Size = new Size(66, 20);
-            lbl_location.TabIndex = 8;
-            lbl_location.Text = "location:";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(84, 191);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(263, 27);
-            textBox4.TabIndex = 9;
+            txb_time.Location = new Point(60, 143);
+            txb_time.Name = "txb_time";
+            txb_time.Size = new Size(287, 27);
+            txb_time.TabIndex = 7;
             // 
             // btn_saveChanges
             // 
-            btn_saveChanges.Location = new Point(14, 248);
+            btn_saveChanges.Location = new Point(12, 176);
             btn_saveChanges.Name = "btn_saveChanges";
             btn_saveChanges.Size = new Size(332, 62);
             btn_saveChanges.TabIndex = 10;
@@ -133,7 +115,7 @@
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(15, 316);
+            btn_return.Location = new Point(13, 244);
             btn_return.Name = "btn_return";
             btn_return.Size = new Size(332, 62);
             btn_return.TabIndex = 11;
@@ -145,21 +127,21 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(359, 386);
+            ClientSize = new Size(359, 317);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(textBox4);
-            Controls.Add(lbl_location);
-            Controls.Add(textBox3);
+            Controls.Add(txb_time);
             Controls.Add(lbl_time);
             Controls.Add(txb_date);
             Controls.Add(lbl_date);
-            Controls.Add(textBox2);
-            Controls.Add(lbl_Dname);
-            Controls.Add(textBox1);
+            Controls.Add(txb_hName);
+            Controls.Add(lbl_hName);
+            Controls.Add(txb_pName);
             Controls.Add(lbl_Pname);
             Name = "viewAppointments";
             Text = "viewAppointments";
+            FormClosed += viewAppointments_FormClosed;
+            Load += viewAppointments_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -167,15 +149,13 @@
         #endregion
 
         private Label lbl_Pname;
-        private TextBox textBox1;
-        private Label lbl_Dname;
-        private TextBox textBox2;
+        private TextBox txb_pName;
+        private Label lbl_hName;
+        private TextBox txb_hName;
         private Label lbl_date;
         private TextBox txb_date;
         private Label lbl_time;
-        private TextBox textBox3;
-        private Label lbl_location;
-        private TextBox textBox4;
+        private TextBox txb_time;
         private Button btn_saveChanges;
         private Button btn_return;
     }
