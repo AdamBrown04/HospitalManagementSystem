@@ -30,12 +30,13 @@
         {
             lsb_selectTable = new ListBox();
             btn_submit = new Button();
+            lbl_jobRole = new Label();
             SuspendLayout();
             // 
             // lsb_selectTable
             // 
             lsb_selectTable.FormattingEnabled = true;
-            lsb_selectTable.Location = new Point(12, 12);
+            lsb_selectTable.Location = new Point(12, 36);
             lsb_selectTable.Name = "lsb_selectTable";
             lsb_selectTable.Size = new Size(301, 264);
             lsb_selectTable.TabIndex = 0;
@@ -44,7 +45,7 @@
             // btn_submit
             // 
             btn_submit.Enabled = false;
-            btn_submit.Location = new Point(12, 282);
+            btn_submit.Location = new Point(12, 306);
             btn_submit.Name = "btn_submit";
             btn_submit.Size = new Size(301, 65);
             btn_submit.TabIndex = 1;
@@ -52,11 +53,21 @@
             btn_submit.UseVisualStyleBackColor = true;
             btn_submit.Click += btn_submit_Click;
             // 
+            // lbl_jobRole
+            // 
+            lbl_jobRole.AutoSize = true;
+            lbl_jobRole.Location = new Point(12, 9);
+            lbl_jobRole.Name = "lbl_jobRole";
+            lbl_jobRole.Size = new Size(64, 20);
+            lbl_jobRole.TabIndex = 2;
+            lbl_jobRole.Text = "job role:";
+            // 
             // selectTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(325, 352);
+            ClientSize = new Size(325, 383);
+            Controls.Add(lbl_jobRole);
             Controls.Add(btn_submit);
             Controls.Add(lsb_selectTable);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -66,11 +77,13 @@
             FormClosed += selectTable_FormClosed;
             Load += selectTable_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ListBox lsb_selectTable;
         private Button btn_submit;
+        private Label lbl_jobRole;
     }
 }

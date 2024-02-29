@@ -34,13 +34,29 @@ namespace HospitalManagementSystem
 
         private void selectTable_Load(object sender, EventArgs e)
         {
-
             tableNames = allowedTables();
 
             foreach (string tableName in tableNames)
             {
                 lsb_selectTable.Items.Add(tableName);
             }
+
+            string sql = $"SELECT jobs.jobName FROM staff INNER JOIN jobs ON (jobs.jobsID = staff.jobID) WHERE username = '{username}'";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            string jobName = "";
+
+            while (reader.Read())
+            {
+                jobName = reader.GetString(0);
+            }
+
+            lbl_jobRole.Text = "job role: " + jobName;
         }
 
         private List<string> allowedTables()
