@@ -175,22 +175,49 @@ namespace HospitalManagementSystem
             switch (tName) 
             {
                 case "staff":
+                    viewStaff staffForm = new viewStaff();
+                    staffForm.Show();
+                    this.Hide();
                     break;
                 case "jobs":
+                    viewJobs jobsForms = new viewJobs();
+                    jobsForms.Show();
+                    this.Hide();
                     break;
                 case "hospital":
+                    viewHospital hospitalForm = new viewHospital();
+                    hospitalForm.Show();
+                    this.Hide();
                     break;
                 case "appointment":
+                    viewAppointments appointmentForm = new viewAppointments();
+                    appointmentForm.Show();
+                    this.Hide();
                     break;
                 case "department":
+                    viewDepartment departmentForm = new viewDepartment();
+                    departmentForm.Show();
+                    this.Hide();
                     break;
                 case "diagnosis":
+                    viewDiagnosis daignosisForm = new viewDiagnosis();
+                    daignosisForm.Show();
+                    this.Hide();
                     break;
                 case "patientdetails":
+                    viewPatientDetails patientdetailsForm = new viewPatientDetails();
+                    patientdetailsForm.Show();
+                    this.Hide();
                     break;
                 case "patientrecords":
+                    viewPatientRecord patientrecordsForm = new viewPatientRecord();
+                    patientrecordsForm.Show();
+                    this.Hide();
                     break;
                 case "test":
+                    viewTest testForm = new viewTest();
+                    testForm.Show();
+                    this.Hide();
                     break;
             }
 
