@@ -44,6 +44,8 @@
             txb_phoneNumber = new TextBox();
             btn_saveChanges = new Button();
             button2 = new Button();
+            lbl_accessLevel = new Label();
+            txb_accessLevel = new TextBox();
             SuspendLayout();
             // 
             // lbl_name
@@ -161,7 +163,7 @@
             // 
             // btn_saveChanges
             // 
-            btn_saveChanges.Location = new Point(13, 345);
+            btn_saveChanges.Location = new Point(10, 380);
             btn_saveChanges.Name = "btn_saveChanges";
             btn_saveChanges.Size = new Size(344, 53);
             btn_saveChanges.TabIndex = 14;
@@ -170,18 +172,36 @@
             // 
             // button2
             // 
-            button2.Location = new Point(13, 404);
+            button2.Location = new Point(10, 439);
             button2.Name = "button2";
             button2.Size = new Size(344, 53);
             button2.TabIndex = 15;
             button2.Text = "return to menu";
             button2.UseVisualStyleBackColor = true;
             // 
+            // lbl_accessLevel
+            // 
+            lbl_accessLevel.AutoSize = true;
+            lbl_accessLevel.Location = new Point(12, 337);
+            lbl_accessLevel.Name = "lbl_accessLevel";
+            lbl_accessLevel.Size = new Size(89, 20);
+            lbl_accessLevel.TabIndex = 16;
+            lbl_accessLevel.Text = "access level:";
+            // 
+            // txb_accessLevel
+            // 
+            txb_accessLevel.Location = new Point(105, 334);
+            txb_accessLevel.Name = "txb_accessLevel";
+            txb_accessLevel.Size = new Size(249, 27);
+            txb_accessLevel.TabIndex = 17;
+            // 
             // viewStaff
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(366, 463);
+            ClientSize = new Size(366, 518);
+            Controls.Add(txb_accessLevel);
+            Controls.Add(lbl_accessLevel);
             Controls.Add(button2);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_phoneNumber);
@@ -222,5 +242,7 @@
         private TextBox txb_phoneNumber;
         private Button btn_saveChanges;
         private Button button2;
+        private Label lbl_accessLevel;
+        private TextBox txb_accessLevel;
     }
 }
