@@ -75,6 +75,7 @@ namespace HospitalManagementSystem
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
+            /*
             if (isNewForm)
             {
 
@@ -97,6 +98,7 @@ namespace HospitalManagementSystem
                     MessageBox.Show("Make sure all text boxes are filled out");
                 }
             }
+        */
         }
     }
 }
