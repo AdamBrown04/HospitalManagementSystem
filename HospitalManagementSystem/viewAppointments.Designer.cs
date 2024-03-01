@@ -33,11 +33,11 @@
             lbl_hName = new Label();
             txb_hName = new TextBox();
             lbl_date = new Label();
-            txb_date = new TextBox();
             lbl_time = new Label();
-            txb_time = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
+            dt_date = new DateTimePicker();
+            dt_time = new DateTimePicker();
             SuspendLayout();
             // 
             // lbl_Pname
@@ -81,13 +81,6 @@
             lbl_date.TabIndex = 4;
             lbl_date.Text = "date:";
             // 
-            // txb_date
-            // 
-            txb_date.Location = new Point(60, 98);
-            txb_date.Name = "txb_date";
-            txb_date.Size = new Size(287, 27);
-            txb_date.TabIndex = 5;
-            // 
             // lbl_time
             // 
             lbl_time.AutoSize = true;
@@ -96,13 +89,6 @@
             lbl_time.Size = new Size(42, 20);
             lbl_time.TabIndex = 6;
             lbl_time.Text = "time:";
-            // 
-            // txb_time
-            // 
-            txb_time.Location = new Point(60, 143);
-            txb_time.Name = "txb_time";
-            txb_time.Size = new Size(287, 27);
-            txb_time.TabIndex = 7;
             // 
             // btn_saveChanges
             // 
@@ -124,16 +110,34 @@
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
             // 
+            // dt_date
+            // 
+            dt_date.Format = DateTimePickerFormat.Short;
+            dt_date.Location = new Point(60, 92);
+            dt_date.Name = "dt_date";
+            dt_date.Size = new Size(287, 27);
+            dt_date.TabIndex = 12;
+            // 
+            // dt_time
+            // 
+            dt_time.Format = DateTimePickerFormat.Time;
+            dt_time.Location = new Point(60, 138);
+            dt_time.Name = "dt_time";
+            dt_time.ShowUpDown = true;
+            dt_time.Size = new Size(289, 27);
+            dt_time.TabIndex = 13;
+            dt_time.Value = new DateTime(2024, 3, 1, 0, 0, 0, 0);
+            // 
             // viewAppointments
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(359, 317);
+            ClientSize = new Size(354, 316);
+            Controls.Add(dt_time);
+            Controls.Add(dt_date);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(txb_time);
             Controls.Add(lbl_time);
-            Controls.Add(txb_date);
             Controls.Add(lbl_date);
             Controls.Add(txb_hName);
             Controls.Add(lbl_hName);
@@ -154,10 +158,10 @@
         private Label lbl_hName;
         private TextBox txb_hName;
         private Label lbl_date;
-        private TextBox txb_date;
         private Label lbl_time;
-        private TextBox txb_time;
         private Button btn_saveChanges;
         private Button btn_return;
+        private DateTimePicker dt_date;
+        private DateTimePicker dt_time;
     }
 }

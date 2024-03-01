@@ -44,6 +44,7 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
+                recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID) WHERE appointmentID = '{recordIDnumber}'";
 
                 MySqlConnection con = new MySqlConnection();
@@ -56,17 +57,23 @@ namespace HospitalManagementSystem
                 {
                     txb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
                     txb_hName.Text = $"{reader["hospitalName"]}";
-                    txb_date.Text = $"{reader["appointmentDate"]}";
-                    txb_time.Text = $"{reader["appointmentTime"]}";
+                    dt_date.Text = $"{reader["appointmentDate"]}";
+                    dt_time.Text = $"{reader["appointmentTime"]}";
                 }
+                recordIDnumber -= 1;
             }
         }
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
-            if ()
-            {
+            string patientName = txb_pName.Text;
+            string hospitalName = txb_hName.Text;
+            string date = dt_date.Text;
+            string time = dt_time.Text;
 
+            if (patientName != "" && hospitalName != "" && date != "" && time != "")
+            {
+                MessageBox.Show("this works");
             }
         }
     }
