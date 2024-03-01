@@ -15,9 +15,12 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
+        int patientID = 0;
+        int hospitalID = 0;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
+        bool isNewForm = false;
         public viewAppointments(int recordID, string tableName, string username, int accessLevel)
         {
             InitializeComponent();
@@ -59,22 +62,43 @@ namespace HospitalManagementSystem
                     txb_hName.Text = $"{reader["hospitalName"]}";
                     dt_date.Text = $"{reader["appointmentDate"]}";
                     dt_time.Text = $"{reader["appointmentTime"]}";
+                    patientID = Convert.ToInt32(reader["patientDetailsID"]);
+                    hospitalID = Convert.ToInt32(reader["hospitalID"]);
                 }
                 recordIDnumber -= 1;
+            }
+            else
+            {
+                isNewForm = true;
             }
         }
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
-            string patientName = txb_pName.Text;
-            string hospitalName = txb_hName.Text;
-            string date = dt_date.Text;
-            string time = dt_time.Text;
-
-            if (patientName != "" && hospitalName != "" && date != "" && time != "")
+            if (isNewForm)
             {
-                MessageBox.Show("this works");
+
+            }
+            else
+            {
+                string date = dt_date.Text;
+                string time = dt_time.Text;
+
+                if (date != "" && time != "")
+                {
+                    string sql = $"INSERT INTO `appointment` (`appointmentID`, `hospitalID`, `patientDetailsID`, `appointmentDate`, `appointmentTime`) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}'); ";
+                    MySqlConnection con = new MySqlConnection();
+                    con.ConnectionString = connectionString;
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                }
+                else
+                {
+                    MessageBox.Show("Make sure all text boxes are filled out");
+                }
             }
         }
     }
 }
+
+//UPDATE `appointment` SET `appointmentTime` = '15:00:00' WHERE `appointment`.`appointmentID` = 2;
