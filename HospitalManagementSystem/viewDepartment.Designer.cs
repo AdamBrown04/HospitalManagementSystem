@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             lbl_depName = new Label();
-            textBox1 = new TextBox();
+            txb_departmentName = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             SuspendLayout();
@@ -43,12 +43,12 @@
             lbl_depName.TabIndex = 0;
             lbl_depName.Text = "department name:";
             // 
-            // textBox1
+            // txb_departmentName
             // 
-            textBox1.Location = new Point(147, 11);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(247, 27);
-            textBox1.TabIndex = 1;
+            txb_departmentName.Location = new Point(147, 11);
+            txb_departmentName.Name = "txb_departmentName";
+            txb_departmentName.Size = new Size(247, 27);
+            txb_departmentName.TabIndex = 1;
             // 
             // btn_saveChanges
             // 
@@ -58,6 +58,7 @@
             btn_saveChanges.TabIndex = 2;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -76,10 +77,12 @@
             ClientSize = new Size(406, 191);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(textBox1);
+            Controls.Add(txb_departmentName);
             Controls.Add(lbl_depName);
             Name = "viewDepartment";
             Text = "department";
+            FormClosed += viewDepartment_FormClosed;
+            Load += viewDepartment_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -87,7 +90,7 @@
         #endregion
 
         private Label lbl_depName;
-        private TextBox textBox1;
+        private TextBox txb_departmentName;
         private Button btn_saveChanges;
         private Button btn_return;
     }
