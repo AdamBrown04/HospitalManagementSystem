@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             lbl_jobName = new Label();
-            textBox1 = new TextBox();
+            txb_jobName = new TextBox();
             lbl_departmentName = new Label();
-            textBox2 = new TextBox();
+            txb_departmentName = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             SuspendLayout();
@@ -45,12 +45,12 @@
             lbl_jobName.TabIndex = 0;
             lbl_jobName.Text = "job name:";
             // 
-            // textBox1
+            // txb_jobName
             // 
-            textBox1.Location = new Point(86, 14);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(270, 27);
-            textBox1.TabIndex = 1;
+            txb_jobName.Location = new Point(86, 14);
+            txb_jobName.Name = "txb_jobName";
+            txb_jobName.Size = new Size(270, 27);
+            txb_jobName.TabIndex = 1;
             // 
             // lbl_departmentName
             // 
@@ -61,12 +61,12 @@
             lbl_departmentName.TabIndex = 2;
             lbl_departmentName.Text = "department:";
             // 
-            // textBox2
+            // txb_departmentName
             // 
-            textBox2.Location = new Point(101, 60);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(255, 27);
-            textBox2.TabIndex = 3;
+            txb_departmentName.Location = new Point(101, 60);
+            txb_departmentName.Name = "txb_departmentName";
+            txb_departmentName.Size = new Size(255, 27);
+            txb_departmentName.TabIndex = 3;
             // 
             // btn_saveChanges
             // 
@@ -94,12 +94,14 @@
             ClientSize = new Size(362, 227);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(textBox2);
+            Controls.Add(txb_departmentName);
             Controls.Add(lbl_departmentName);
-            Controls.Add(textBox1);
+            Controls.Add(txb_jobName);
             Controls.Add(lbl_jobName);
             Name = "viewJobs";
             Text = "view Job";
+            FormClosed += viewJobs_FormClosed;
+            Load += viewJobs_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,9 +109,9 @@
         #endregion
 
         private Label lbl_jobName;
-        private TextBox textBox1;
+        private TextBox txb_jobName;
         private Label lbl_departmentName;
-        private TextBox textBox2;
+        private TextBox txb_departmentName;
         private Button btn_saveChanges;
         private Button btn_return;
     }
