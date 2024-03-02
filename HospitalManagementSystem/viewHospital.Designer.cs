@@ -170,6 +170,8 @@
             Controls.Add(lbl_hName);
             Name = "viewHospital";
             Text = "view Hospital";
+            FormClosed += viewHospital_FormClosed;
+            Load += viewHospital_Load;
             ResumeLayout(false);
             PerformLayout();
         }
