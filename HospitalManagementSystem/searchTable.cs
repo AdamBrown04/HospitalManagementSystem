@@ -128,7 +128,7 @@ namespace HospitalManagementSystem
             switch (tName)
             {
                 case "staff":
-                    itemName = itemName + $"name: {reader["firstName"]} {reader["lastName"]}";
+                    itemName = itemName + $"name: {reader["sFirstName"]} {reader["sLastName"]}";
                     break;
                 case "jobs":
                     itemName = itemName + $"job name: {reader["jobName"]}";
@@ -152,7 +152,7 @@ namespace HospitalManagementSystem
                     itemName = itemName + $"patient name: {reader["firstName"]} {reader["lastName"]}";
                     break;
                 case "test":
-                    itemName = itemName + $"test name: {reader["testName"]} member of staff: {reader["firstName"]} {reader["lastName"]}";
+                    itemName = itemName + $"test name: {reader["testName"]} member of staff: {reader["sFirstName"]} {reader["sLastName"]}";
                     break;
             }
 

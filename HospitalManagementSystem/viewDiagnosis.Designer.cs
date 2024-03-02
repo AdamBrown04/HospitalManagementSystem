@@ -121,6 +121,8 @@
             Controls.Add(lbl_pName);
             Name = "viewDiagnosis";
             Text = "view Diagnosis";
+            FormClosed += viewDiagnosis_FormClosed;
+            Load += viewDiagnosis_Load;
             ResumeLayout(false);
             PerformLayout();
         }
