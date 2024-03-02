@@ -69,6 +69,7 @@ namespace HospitalManagementSystem
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
+            /*
             string sql = "";
 
             if (isNewForm)
@@ -94,6 +95,7 @@ namespace HospitalManagementSystem
             {
                 MessageBox.Show("query failed");
             }
+            */
         }
     }
 }
