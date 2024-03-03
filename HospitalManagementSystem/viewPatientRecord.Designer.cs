@@ -31,13 +31,11 @@
             lbl_name = new Label();
             lbl_height = new Label();
             lbl_weight = new Label();
-            lbl_diagnosis = new Label();
+            lbl_bloodType = new Label();
             txb_name = new TextBox();
             txb_height = new TextBox();
             txb_weight = new TextBox();
-            txb_diagnosis = new TextBox();
-            lbl_doctor = new Label();
-            txb_doctor = new TextBox();
+            txb_bloodType = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             SuspendLayout();
@@ -69,14 +67,14 @@
             lbl_weight.TabIndex = 2;
             lbl_weight.Text = "weight:";
             // 
-            // lbl_diagnosis
+            // lbl_bloodType
             // 
-            lbl_diagnosis.AutoSize = true;
-            lbl_diagnosis.Location = new Point(10, 129);
-            lbl_diagnosis.Name = "lbl_diagnosis";
-            lbl_diagnosis.Size = new Size(75, 20);
-            lbl_diagnosis.TabIndex = 3;
-            lbl_diagnosis.Text = "diagnosis:";
+            lbl_bloodType.AutoSize = true;
+            lbl_bloodType.Location = new Point(10, 129);
+            lbl_bloodType.Name = "lbl_bloodType";
+            lbl_bloodType.Size = new Size(75, 20);
+            lbl_bloodType.TabIndex = 3;
+            lbl_bloodType.Text = "diagnosis:";
             // 
             // txb_name
             // 
@@ -99,33 +97,16 @@
             txb_weight.Size = new Size(367, 27);
             txb_weight.TabIndex = 6;
             // 
-            // txb_diagnosis
+            // txb_bloodType
             // 
-            txb_diagnosis.Location = new Point(91, 129);
-            txb_diagnosis.Multiline = true;
-            txb_diagnosis.Name = "txb_diagnosis";
-            txb_diagnosis.Size = new Size(350, 125);
-            txb_diagnosis.TabIndex = 7;
-            // 
-            // lbl_doctor
-            // 
-            lbl_doctor.AutoSize = true;
-            lbl_doctor.Location = new Point(12, 280);
-            lbl_doctor.Name = "lbl_doctor";
-            lbl_doctor.Size = new Size(56, 20);
-            lbl_doctor.TabIndex = 8;
-            lbl_doctor.Text = "doctor:";
-            // 
-            // txb_doctor
-            // 
-            txb_doctor.Location = new Point(74, 277);
-            txb_doctor.Name = "txb_doctor";
-            txb_doctor.Size = new Size(367, 27);
-            txb_doctor.TabIndex = 9;
+            txb_bloodType.Location = new Point(91, 129);
+            txb_bloodType.Name = "txb_bloodType";
+            txb_bloodType.Size = new Size(350, 27);
+            txb_bloodType.TabIndex = 7;
             // 
             // btn_saveChanges
             // 
-            btn_saveChanges.Location = new Point(11, 327);
+            btn_saveChanges.Location = new Point(10, 162);
             btn_saveChanges.Name = "btn_saveChanges";
             btn_saveChanges.Size = new Size(431, 61);
             btn_saveChanges.TabIndex = 10;
@@ -134,7 +115,7 @@
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(12, 394);
+            btn_return.Location = new Point(11, 229);
             btn_return.Name = "btn_return";
             btn_return.Size = new Size(431, 61);
             btn_return.TabIndex = 11;
@@ -146,21 +127,21 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(453, 472);
+            ClientSize = new Size(453, 304);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(txb_doctor);
-            Controls.Add(lbl_doctor);
-            Controls.Add(txb_diagnosis);
+            Controls.Add(txb_bloodType);
             Controls.Add(txb_weight);
             Controls.Add(txb_height);
             Controls.Add(txb_name);
-            Controls.Add(lbl_diagnosis);
+            Controls.Add(lbl_bloodType);
             Controls.Add(lbl_weight);
             Controls.Add(lbl_height);
             Controls.Add(lbl_name);
             Name = "viewPatientRecord";
             Text = "viewPatientRecord";
+            FormClosed += viewPatientRecord_FormClosed;
+            Load += viewPatientRecord_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -170,13 +151,11 @@
         private Label lbl_name;
         private Label lbl_height;
         private Label lbl_weight;
-        private Label lbl_diagnosis;
+        private Label lbl_bloodType;
         private TextBox txb_name;
         private TextBox txb_height;
         private TextBox txb_weight;
-        private TextBox txb_diagnosis;
-        private Label lbl_doctor;
-        private TextBox txb_doctor;
+        private TextBox txb_bloodType;
         private Button btn_saveChanges;
         private Button btn_return;
     }
