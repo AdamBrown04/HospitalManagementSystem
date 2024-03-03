@@ -33,19 +33,23 @@
             txb_job = new TextBox();
             lbl_job = new Label();
             txb_department = new TextBox();
-            txb_DoB = new TextBox();
             lbl_department = new Label();
             lbl_DoB = new Label();
-            lbl_address = new Label();
-            textBox1 = new TextBox();
+            lbl_address1 = new Label();
+            txb_address1 = new TextBox();
             lbl_email = new Label();
-            textBox2 = new TextBox();
+            txb_email = new TextBox();
             lbl_phoneNumber = new Label();
             txb_phoneNumber = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             lbl_accessLevel = new Label();
             txb_accessLevel = new TextBox();
+            dt_dob = new DateTimePicker();
+            lbl_address2 = new Label();
+            lbl_address3 = new Label();
+            txb_address2 = new TextBox();
+            txb_address3 = new TextBox();
             SuspendLayout();
             // 
             // lbl_name
@@ -87,13 +91,6 @@
             txb_department.Size = new Size(246, 27);
             txb_department.TabIndex = 4;
             // 
-            // txb_DoB
-            // 
-            txb_DoB.Location = new Point(67, 108);
-            txb_DoB.Name = "txb_DoB";
-            txb_DoB.Size = new Size(287, 27);
-            txb_DoB.TabIndex = 5;
-            // 
             // lbl_department
             // 
             lbl_department.AutoSize = true;
@@ -112,38 +109,37 @@
             lbl_DoB.TabIndex = 7;
             lbl_DoB.Text = "DoB:";
             // 
-            // lbl_address
+            // lbl_address1
             // 
-            lbl_address.AutoSize = true;
-            lbl_address.Location = new Point(12, 150);
-            lbl_address.Name = "lbl_address";
-            lbl_address.Size = new Size(63, 20);
-            lbl_address.TabIndex = 8;
-            lbl_address.Text = "address:";
+            lbl_address1.AutoSize = true;
+            lbl_address1.Location = new Point(12, 150);
+            lbl_address1.Name = "lbl_address1";
+            lbl_address1.Size = new Size(103, 20);
+            lbl_address1.TabIndex = 8;
+            lbl_address1.Text = "address line 1:";
             // 
-            // textBox1
+            // txb_address1
             // 
-            textBox1.Location = new Point(81, 150);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(273, 66);
-            textBox1.TabIndex = 9;
+            txb_address1.Location = new Point(127, 150);
+            txb_address1.Name = "txb_address1";
+            txb_address1.Size = new Size(227, 27);
+            txb_address1.TabIndex = 9;
             // 
             // lbl_email
             // 
             lbl_email.AutoSize = true;
-            lbl_email.Location = new Point(12, 241);
+            lbl_email.Location = new Point(12, 256);
             lbl_email.Name = "lbl_email";
             lbl_email.Size = new Size(49, 20);
             lbl_email.TabIndex = 10;
             lbl_email.Text = "email:";
             // 
-            // textBox2
+            // txb_email
             // 
-            textBox2.Location = new Point(67, 241);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(287, 27);
-            textBox2.TabIndex = 11;
+            txb_email.Location = new Point(67, 256);
+            txb_email.Name = "txb_email";
+            txb_email.Size = new Size(287, 27);
+            txb_email.TabIndex = 11;
             // 
             // lbl_phoneNumber
             // 
@@ -196,24 +192,67 @@
             txb_accessLevel.Size = new Size(249, 27);
             txb_accessLevel.TabIndex = 17;
             // 
+            // dt_dob
+            // 
+            dt_dob.Location = new Point(69, 115);
+            dt_dob.Name = "dt_dob";
+            dt_dob.Size = new Size(285, 27);
+            dt_dob.TabIndex = 18;
+            // 
+            // lbl_address2
+            // 
+            lbl_address2.AutoSize = true;
+            lbl_address2.Location = new Point(12, 185);
+            lbl_address2.Name = "lbl_address2";
+            lbl_address2.Size = new Size(103, 20);
+            lbl_address2.TabIndex = 19;
+            lbl_address2.Text = "address line 2:";
+            // 
+            // lbl_address3
+            // 
+            lbl_address3.AutoSize = true;
+            lbl_address3.Location = new Point(10, 222);
+            lbl_address3.Name = "lbl_address3";
+            lbl_address3.Size = new Size(103, 20);
+            lbl_address3.TabIndex = 20;
+            lbl_address3.Text = "address line 3:";
+            // 
+            // txb_address2
+            // 
+            txb_address2.Location = new Point(127, 185);
+            txb_address2.Name = "txb_address2";
+            txb_address2.Size = new Size(227, 27);
+            txb_address2.TabIndex = 21;
+            // 
+            // txb_address3
+            // 
+            txb_address3.Location = new Point(127, 223);
+            txb_address3.Name = "txb_address3";
+            txb_address3.Size = new Size(227, 27);
+            txb_address3.TabIndex = 22;
+            // 
             // viewStaff
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(366, 501);
+            Controls.Add(txb_address3);
+            Controls.Add(txb_address2);
+            Controls.Add(lbl_address3);
+            Controls.Add(lbl_address2);
+            Controls.Add(dt_dob);
             Controls.Add(txb_accessLevel);
             Controls.Add(lbl_accessLevel);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_phoneNumber);
             Controls.Add(lbl_phoneNumber);
-            Controls.Add(textBox2);
+            Controls.Add(txb_email);
             Controls.Add(lbl_email);
-            Controls.Add(textBox1);
-            Controls.Add(lbl_address);
+            Controls.Add(txb_address1);
+            Controls.Add(lbl_address1);
             Controls.Add(lbl_DoB);
             Controls.Add(lbl_department);
-            Controls.Add(txb_DoB);
             Controls.Add(txb_department);
             Controls.Add(lbl_job);
             Controls.Add(txb_job);
@@ -221,6 +260,8 @@
             Controls.Add(lbl_name);
             Name = "viewStaff";
             Text = "view staff";
+            FormClosed += viewStaff_FormClosed;
+            Load += viewStaff_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -232,18 +273,22 @@
         private TextBox txb_job;
         private Label lbl_job;
         private TextBox txb_department;
-        private TextBox txb_DoB;
         private Label lbl_department;
         private Label lbl_DoB;
-        private Label lbl_address;
-        private TextBox textBox1;
+        private Label lbl_address1;
+        private TextBox txb_address1;
         private Label lbl_email;
-        private TextBox textBox2;
+        private TextBox txb_email;
         private Label lbl_phoneNumber;
         private TextBox txb_phoneNumber;
         private Button btn_saveChanges;
         private Button btn_return;
         private Label lbl_accessLevel;
         private TextBox txb_accessLevel;
+        private DateTimePicker dt_dob;
+        private Label lbl_address2;
+        private Label lbl_address3;
+        private TextBox txb_address2;
+        private TextBox txb_address3;
     }
 }
