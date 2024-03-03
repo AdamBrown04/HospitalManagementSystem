@@ -32,12 +32,14 @@
             lbl_staffName = new Label();
             lbl_testResults = new Label();
             lbl_patientID = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            txb_testID = new TextBox();
+            txb_sName = new TextBox();
+            txb_pName = new TextBox();
+            txb_testResults = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
+            txb_testName = new TextBox();
+            lbl_testName = new Label();
             SuspendLayout();
             // 
             // lbl_testID
@@ -61,7 +63,7 @@
             // lbl_testResults
             // 
             lbl_testResults.AutoSize = true;
-            lbl_testResults.Location = new Point(12, 138);
+            lbl_testResults.Location = new Point(12, 187);
             lbl_testResults.Name = "lbl_testResults";
             lbl_testResults.Size = new Size(82, 20);
             lbl_testResults.TabIndex = 2;
@@ -76,38 +78,38 @@
             lbl_patientID.TabIndex = 3;
             lbl_patientID.Text = "patient name:";
             // 
-            // textBox1
+            // txb_testID
             // 
-            textBox1.Location = new Point(74, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(366, 27);
-            textBox1.TabIndex = 4;
+            txb_testID.Location = new Point(74, 19);
+            txb_testID.Name = "txb_testID";
+            txb_testID.Size = new Size(366, 27);
+            txb_testID.TabIndex = 4;
             // 
-            // textBox2
+            // txb_sName
             // 
-            textBox2.Location = new Point(100, 61);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(340, 27);
-            textBox2.TabIndex = 5;
+            txb_sName.Location = new Point(100, 61);
+            txb_sName.Name = "txb_sName";
+            txb_sName.Size = new Size(340, 27);
+            txb_sName.TabIndex = 5;
             // 
-            // textBox3
+            // txb_pName
             // 
-            textBox3.Location = new Point(118, 98);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(322, 27);
-            textBox3.TabIndex = 6;
+            txb_pName.Location = new Point(118, 98);
+            txb_pName.Name = "txb_pName";
+            txb_pName.Size = new Size(322, 27);
+            txb_pName.TabIndex = 6;
             // 
-            // textBox4
+            // txb_testResults
             // 
-            textBox4.Location = new Point(100, 138);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(340, 130);
-            textBox4.TabIndex = 7;
+            txb_testResults.Location = new Point(100, 187);
+            txb_testResults.Multiline = true;
+            txb_testResults.Name = "txb_testResults";
+            txb_testResults.Size = new Size(340, 130);
+            txb_testResults.TabIndex = 7;
             // 
             // btn_saveChanges
             // 
-            btn_saveChanges.Location = new Point(7, 297);
+            btn_saveChanges.Location = new Point(4, 350);
             btn_saveChanges.Name = "btn_saveChanges";
             btn_saveChanges.Size = new Size(436, 67);
             btn_saveChanges.TabIndex = 8;
@@ -116,7 +118,7 @@
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(7, 370);
+            btn_return.Location = new Point(4, 423);
             btn_return.Name = "btn_return";
             btn_return.Size = new Size(436, 67);
             btn_return.TabIndex = 9;
@@ -124,23 +126,43 @@
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
             // 
+            // txb_testName
+            // 
+            txb_testName.Location = new Point(95, 143);
+            txb_testName.Name = "txb_testName";
+            txb_testName.Size = new Size(345, 27);
+            txb_testName.TabIndex = 10;
+            // 
+            // lbl_testName
+            // 
+            lbl_testName.AutoSize = true;
+            lbl_testName.Location = new Point(12, 146);
+            lbl_testName.Name = "lbl_testName";
+            lbl_testName.Size = new Size(77, 20);
+            lbl_testName.TabIndex = 11;
+            lbl_testName.Text = "test name:";
+            // 
             // viewTest
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(452, 447);
+            ClientSize = new Size(452, 506);
+            Controls.Add(lbl_testName);
+            Controls.Add(txb_testName);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txb_testResults);
+            Controls.Add(txb_pName);
+            Controls.Add(txb_sName);
+            Controls.Add(txb_testID);
             Controls.Add(lbl_patientID);
             Controls.Add(lbl_testResults);
             Controls.Add(lbl_staffName);
             Controls.Add(lbl_testID);
             Name = "viewTest";
             Text = "viewTest";
+            FormClosed += viewTest_FormClosed;
+            Load += viewTest_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,11 +173,13 @@
         private Label lbl_staffName;
         private Label lbl_testResults;
         private Label lbl_patientID;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txb_testID;
+        private TextBox txb_sName;
+        private TextBox txb_pName;
+        private TextBox txb_testResults;
         private Button btn_saveChanges;
         private Button btn_return;
+        private TextBox txb_testName;
+        private Label lbl_testName;
     }
 }
