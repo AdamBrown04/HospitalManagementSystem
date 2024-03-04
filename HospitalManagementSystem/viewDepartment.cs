@@ -69,33 +69,57 @@ namespace HospitalManagementSystem
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
-            /*
             string sql = "";
+            string dName = txb_departmentName.Text;
+
+            recordIDnumber += 1;
 
             if (isNewForm)
             {
-                sql = $"INSERT INTO 'department' ('departmentID', 'departmentName') VALUES (NULL, '{txb_departmentName}')";
+                sql = $"INSERT INTO department (departmentID, departmentName) VALUES (NULL, '{dName}')";
             }
             else
             {
-                sql = $"UPDATE 'department' SET 'departmentName' = {txb_departmentName} WHERE 'department.departmentID = {recordIDnumber}";
+                sql = $"UPDATE department SET departmentName = '{dName}' WHERE department.departmentID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
             con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
             MySqlCommand cmd = new MySqlCommand(sql, con);
-            
-            int linesAdded = cmd.ExecuteNonQuery();
-            if(linesAdded > 0)
+
+            if (isNewForm)
             {
-                MessageBox.Show("query was completed successfully");
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
             }
             else
             {
-                MessageBox.Show("query failed");
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
             }
-            */
+
+            recordIDnumber -= 1;
+            
         }
     }
 }
