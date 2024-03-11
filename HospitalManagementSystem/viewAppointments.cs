@@ -47,6 +47,8 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
+                txb_pName.Enabled = false;
+
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID) WHERE appointmentID = '{recordIDnumber}'";
 
@@ -75,32 +77,59 @@ namespace HospitalManagementSystem
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
-            /*
+
+            string sql = "";
+
+            recordIDnumber += 1;
+
             if (isNewForm)
             {
-
+                sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{dt_date}', '{dt_time}')";
             }
             else
             {
-                string date = dt_date.Text;
-                string time = dt_time.Text;
+                sql = $"UPDATE appointment SET hospitalID = '{hospitalID}', appointmentDate = '{dt_date}', appointmentTime = '{dt_time}' WHERE appointmentID = {recordIDnumber}";
+            }
 
-                if (date != "" && time != "")
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+            
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
                 {
-                    string sql = $"INSERT INTO `appointment` (`appointmentID`, `hospitalID`, `patientDetailsID`, `appointmentDate`, `appointmentTime`) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}'); ";
-                    MySqlConnection con = new MySqlConnection();
-                    con.ConnectionString = connectionString;
-                    con.Open();
-                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    btn_return_Click(sender, new EventArgs());
                 }
                 else
                 {
-                    MessageBox.Show("Make sure all text boxes are filled out");
+                    MessageBox.Show("Data insert failed");
                 }
             }
-        */
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
         }
     }
 }
-
-//UPDATE `appointment` SET `appointmentTime` = '15:00:00' WHERE `appointment`.`appointmentID` = 2;
