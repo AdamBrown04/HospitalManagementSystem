@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
 
 namespace HospitalManagementSystem
@@ -47,7 +49,7 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
-                txb_pName.Enabled = false;
+                cb_pName.Enabled = false;
 
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID) WHERE appointmentID = '{recordIDnumber}'";
@@ -60,7 +62,7 @@ namespace HospitalManagementSystem
 
                 while (reader.Read())
                 {
-                    txb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
+                    cb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
                     txb_hName.Text = $"{reader["hospitalName"]}";
                     dt_date.Text = $"{reader["appointmentDate"]}";
                     dt_time.Text = $"{reader["appointmentTime"]}";
@@ -72,6 +74,13 @@ namespace HospitalManagementSystem
             else
             {
                 isNewForm = true;
+
+                List<string> allUsers = GetNames();
+
+                foreach (string user in allUsers)
+                {
+                    cb_pName.Items.Add(user);
+                }
             }
         }
 
@@ -80,15 +89,22 @@ namespace HospitalManagementSystem
 
             string sql = "";
 
+            string date = $"{dt_date.Value.Year}-{dt_date.Value.Month}-{dt_date.Value.Day}";
+            string time = $"{dt_time.Value.Hour}:{dt_time.Value.Minute}:{dt_time.Value.Second}";
+
+            
+
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{dt_date}', '{dt_time}')";
+                string patientID = cb_pName.Text;
+                patientID = patientID.Substring(0, 1);
+                sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}')";
             }
             else
             {
-                sql = $"UPDATE appointment SET hospitalID = '{hospitalID}', appointmentDate = '{dt_date}', appointmentTime = '{dt_time}' WHERE appointmentID = {recordIDnumber}";
+                sql = $"UPDATE appointment SET hospitalID = '{hospitalID}', appointmentDate = '{date}', appointmentTime = '{time}' WHERE appointmentID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
@@ -97,7 +113,7 @@ namespace HospitalManagementSystem
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             MySqlCommand cmd = new MySqlCommand(sql, con);
 
-            
+
 
             if (isNewForm)
             {
@@ -130,6 +146,28 @@ namespace HospitalManagementSystem
 
             recordIDnumber -= 1;
 
+        }
+
+        private List<string> GetNames()
+        {
+            List<string> names = new List<string>();
+            string idName;
+
+            string sql = "SELECT patientDetailsID, firstName, lastName FROM patientDetails";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idName = $"{reader["patientDetailsID"]}-{reader["firstName"]} {reader["lastName"]}";
+                names.Add(idName);
+            }
+
+            return names;
         }
     }
 }

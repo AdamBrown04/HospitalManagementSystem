@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             lbl_Pname = new Label();
-            txb_pName = new TextBox();
             lbl_hName = new Label();
             txb_hName = new TextBox();
             lbl_date = new Label();
@@ -38,6 +37,7 @@
             btn_return = new Button();
             dt_date = new DateTimePicker();
             dt_time = new DateTimePicker();
+            cb_pName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_Pname
@@ -48,13 +48,6 @@
             lbl_Pname.Size = new Size(109, 20);
             lbl_Pname.TabIndex = 0;
             lbl_Pname.Text = "patient's name:";
-            // 
-            // txb_pName
-            // 
-            txb_pName.Location = new Point(127, 9);
-            txb_pName.Name = "txb_pName";
-            txb_pName.Size = new Size(220, 27);
-            txb_pName.TabIndex = 1;
             // 
             // lbl_hName
             // 
@@ -112,6 +105,7 @@
             // 
             // dt_date
             // 
+            dt_date.CustomFormat = "yyyy-MM-dd";
             dt_date.Format = DateTimePickerFormat.Short;
             dt_date.Location = new Point(60, 92);
             dt_date.Name = "dt_date";
@@ -128,11 +122,20 @@
             dt_time.TabIndex = 13;
             dt_time.Value = new DateTime(2024, 3, 1, 0, 0, 0, 0);
             // 
+            // cb_pName
+            // 
+            cb_pName.FormattingEnabled = true;
+            cb_pName.Location = new Point(127, 9);
+            cb_pName.Name = "cb_pName";
+            cb_pName.Size = new Size(220, 28);
+            cb_pName.TabIndex = 14;
+            // 
             // viewAppointments
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(354, 316);
+            Controls.Add(cb_pName);
             Controls.Add(dt_time);
             Controls.Add(dt_date);
             Controls.Add(btn_return);
@@ -141,7 +144,6 @@
             Controls.Add(lbl_date);
             Controls.Add(txb_hName);
             Controls.Add(lbl_hName);
-            Controls.Add(txb_pName);
             Controls.Add(lbl_Pname);
             Name = "viewAppointments";
             Text = "viewAppointments";
@@ -154,7 +156,6 @@
         #endregion
 
         private Label lbl_Pname;
-        private TextBox txb_pName;
         private Label lbl_hName;
         private TextBox txb_hName;
         private Label lbl_date;
@@ -163,5 +164,6 @@
         private Button btn_return;
         private DateTimePicker dt_date;
         private DateTimePicker dt_time;
+        private ComboBox cb_pName;
     }
 }
