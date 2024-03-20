@@ -30,7 +30,6 @@
         {
             lbl_Pname = new Label();
             lbl_hName = new Label();
-            txb_hName = new TextBox();
             lbl_date = new Label();
             lbl_time = new Label();
             btn_saveChanges = new Button();
@@ -38,6 +37,7 @@
             dt_date = new DateTimePicker();
             dt_time = new DateTimePicker();
             cb_pName = new ComboBox();
+            cb_hName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_Pname
@@ -57,13 +57,6 @@
             lbl_hName.Size = new Size(106, 20);
             lbl_hName.TabIndex = 2;
             lbl_hName.Text = "hospital name:";
-            // 
-            // txb_hName
-            // 
-            txb_hName.Location = new Point(127, 51);
-            txb_hName.Name = "txb_hName";
-            txb_hName.Size = new Size(220, 27);
-            txb_hName.TabIndex = 3;
             // 
             // lbl_date
             // 
@@ -130,11 +123,20 @@
             cb_pName.Size = new Size(220, 28);
             cb_pName.TabIndex = 14;
             // 
+            // cb_hName
+            // 
+            cb_hName.FormattingEnabled = true;
+            cb_hName.Location = new Point(127, 54);
+            cb_hName.Name = "cb_hName";
+            cb_hName.Size = new Size(220, 28);
+            cb_hName.TabIndex = 15;
+            // 
             // viewAppointments
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(354, 316);
+            Controls.Add(cb_hName);
             Controls.Add(cb_pName);
             Controls.Add(dt_time);
             Controls.Add(dt_date);
@@ -142,7 +144,6 @@
             Controls.Add(btn_saveChanges);
             Controls.Add(lbl_time);
             Controls.Add(lbl_date);
-            Controls.Add(txb_hName);
             Controls.Add(lbl_hName);
             Controls.Add(lbl_Pname);
             Name = "viewAppointments";
@@ -157,7 +158,6 @@
 
         private Label lbl_Pname;
         private Label lbl_hName;
-        private TextBox txb_hName;
         private Label lbl_date;
         private Label lbl_time;
         private Button btn_saveChanges;
@@ -165,5 +165,6 @@
         private DateTimePicker dt_date;
         private DateTimePicker dt_time;
         private ComboBox cb_pName;
+        private ComboBox cb_hName;
     }
 }

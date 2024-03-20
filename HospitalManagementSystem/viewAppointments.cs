@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,12 +64,13 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     cb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
-                    txb_hName.Text = $"{reader["hospitalName"]}";
+                    cb_hName.Text = $"{reader["hospitalName"]}";
                     dt_date.Text = $"{reader["appointmentDate"]}";
                     dt_time.Text = $"{reader["appointmentTime"]}";
                     patientID = Convert.ToInt32(reader["patientDetailsID"]);
                     hospitalID = Convert.ToInt32(reader["hospitalID"]);
                 }
+
                 recordIDnumber -= 1;
             }
             else
@@ -81,6 +83,13 @@ namespace HospitalManagementSystem
                 {
                     cb_pName.Items.Add(user);
                 }
+            }
+
+            List<string> hospitals = GetHospitals();
+
+            foreach (string hospital in hospitals)
+            {
+                cb_hName.Items.Add(hospital);
             }
         }
 
@@ -98,8 +107,9 @@ namespace HospitalManagementSystem
 
             if (isNewForm)
             {
-                string patientID = cb_pName.Text;
-                patientID = patientID.Substring(0, 1);
+                string patientID = cb_pName.Text.Substring(0, 1);
+                string hospitalID = cb_hName.Text.Substring(0,1);
+
                 sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}')";
             }
             else
@@ -168,6 +178,28 @@ namespace HospitalManagementSystem
             }
 
             return names;
+        }
+
+        private List<string> GetHospitals()
+        {
+            List<string> hospitals = new List<string>();
+            string idHospital;
+
+            string sql = "SELECT hospitalID, hospitalName FROM hospital";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idHospital = $"{reader["hospitalID"]}-{reader["hospitalName"]}";
+                hospitals.Add(idHospital);
+            }
+
+            return hospitals;
         }
     }
 }
