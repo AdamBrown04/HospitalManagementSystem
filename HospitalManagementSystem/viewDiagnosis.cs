@@ -63,6 +63,7 @@ namespace HospitalManagementSystem
                     cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
                     cmb_dName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
                     txb_diagnosis.Text = $"{reader["diagnosisInformation"]}";
+                    staffID = Convert.ToInt32(reader["staffID"]);
                 }
                 recordIDnumber -= 1;
 
@@ -99,11 +100,11 @@ namespace HospitalManagementSystem
                 string patientID = cmb_pName.Text.Substring(0, 1);
                 staffID = Convert.ToInt32(cmb_dName.Text.Substring(0, 1));
 
-                sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis}')";
+                sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis.Text}')";
             }
             else
             {
-                sql = $"UPDATE diagnosis SET staffID = '{staffID}', diagnosisinformation = '{txb_diagnosis}' WHERE diagnosisID = {recordIDnumber}";
+                sql = $"UPDATE diagnosis SET staffID = '{staffID}', diagnosisinformation = '{txb_diagnosis.Text}' WHERE diagnosisID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
