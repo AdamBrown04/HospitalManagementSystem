@@ -17,6 +17,7 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
+        int staffID;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -47,6 +48,7 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
+                cmb_pName.Enabled = false;
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientRecords ON (patientRecords.patientRecordsID  = diagnosis.patientRecordsID) INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = patientRecords.patientDetailsID) INNER JOIN staff ON (staff.staffID  = diagnosis.staffID) WHERE diagnosisID = '{recordIDnumber}'";
 
@@ -58,21 +60,135 @@ namespace HospitalManagementSystem
 
                 while (reader.Read())
                 {
-                    txb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
-                    txb_dName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
+                    cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
+                    cmb_dName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
                     txb_diagnosis.Text = $"{reader["diagnosisInformation"]}";
                 }
                 recordIDnumber -= 1;
+
             }
             else
             {
                 isNewForm = true;
+
+                List<string> allUsers = GetNames();
+
+                foreach (string user in allUsers)
+                {
+                    cmb_pName.Items.Add(user);
+                }
             }
+
+            List<string> doctors = GetDoctors();
+            foreach (string doctor in doctors)
+            {
+                cmb_dName.Items.Add(doctor);
+            }
+        
         }
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
 
+            string sql = "";
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            {
+                string patientID = cmb_pName.Text.Substring(0, 1);
+                staffID = Convert.ToInt32(cmb_dName.Text.Substring(0, 1));
+
+                sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis}')";
+            }
+            else
+            {
+                sql = $"UPDATE diagnosis SET staffID = '{staffID}', diagnosisinformation = '{txb_diagnosis}' WHERE diagnosisID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
         }
+
+        private List<string> GetNames()
+    {
+        List<string> names = new List<string>();
+        string idName;
+
+        string sql = "SELECT patientDetailsID, firstName, lastName FROM patientDetails";
+
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = connectionString;
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand(sql, con);
+        MySqlDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            idName = $"{reader["patientDetailsID"]}-{reader["firstName"]} {reader["lastName"]}";
+            names.Add(idName);
+        }
+
+        return names;
     }
+
+    private List<string> GetDoctors()
+    {
+        List<string> hospitals = new List<string>();
+        string idHospital;
+
+        string sql = "SELECT staffID, sFirstName, sLastName FROM staff WHERE accessLevel = 5";
+
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString =  connectionString;
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand(sql, con);
+        MySqlDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            idHospital = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
+            hospitals.Add(idHospital);
+        }
+
+        return hospitals;
+    }
+}
 }
