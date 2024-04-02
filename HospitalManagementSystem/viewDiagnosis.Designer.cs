@@ -31,11 +31,11 @@
             lbl_pName = new Label();
             lbl_dName = new Label();
             lbl_diagnosis = new Label();
-            txb_pName = new TextBox();
-            txb_dName = new TextBox();
             txb_diagnosis = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
+            cmb_pName = new ComboBox();
+            cmb_dName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_pName
@@ -65,20 +65,6 @@
             lbl_diagnosis.TabIndex = 2;
             lbl_diagnosis.Text = "Diagnosis:";
             // 
-            // txb_pName
-            // 
-            txb_pName.Location = new Point(118, 5);
-            txb_pName.Name = "txb_pName";
-            txb_pName.Size = new Size(220, 27);
-            txb_pName.TabIndex = 3;
-            // 
-            // txb_dName
-            // 
-            txb_dName.Location = new Point(118, 44);
-            txb_dName.Name = "txb_dName";
-            txb_dName.Size = new Size(220, 27);
-            txb_dName.TabIndex = 4;
-            // 
             // txb_diagnosis
             // 
             txb_diagnosis.Location = new Point(88, 79);
@@ -107,16 +93,32 @@
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
             // 
+            // cmb_pName
+            // 
+            cmb_pName.FormattingEnabled = true;
+            cmb_pName.Location = new Point(118, 2);
+            cmb_pName.Name = "cmb_pName";
+            cmb_pName.Size = new Size(214, 28);
+            cmb_pName.TabIndex = 8;
+            // 
+            // cmb_dName
+            // 
+            cmb_dName.FormattingEnabled = true;
+            cmb_dName.Location = new Point(118, 36);
+            cmb_dName.Name = "cmb_dName";
+            cmb_dName.Size = new Size(214, 28);
+            cmb_dName.TabIndex = 9;
+            // 
             // viewDiagnosis
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(344, 346);
+            Controls.Add(cmb_dName);
+            Controls.Add(cmb_pName);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_diagnosis);
-            Controls.Add(txb_dName);
-            Controls.Add(txb_pName);
             Controls.Add(lbl_diagnosis);
             Controls.Add(lbl_dName);
             Controls.Add(lbl_pName);
@@ -133,10 +135,10 @@
         private Label lbl_pName;
         private Label lbl_dName;
         private Label lbl_diagnosis;
-        private TextBox txb_pName;
-        private TextBox txb_dName;
         private TextBox txb_diagnosis;
         private Button btn_saveChanges;
         private Button btn_return;
+        private ComboBox cmb_pName;
+        private ComboBox cmb_dName;
     }
 }
