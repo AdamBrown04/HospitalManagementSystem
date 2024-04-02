@@ -72,5 +72,61 @@ namespace HospitalManagementSystem
                 isNewForm = true;
             }
         }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            { 
+                sql = $"INSERT INTO hospital (hospitalID, hospitalName, addressLine1, addressLine2, addressLine3, postcode) VALUES (NULL, '{txb_hName.Text}', '{txb_address1.Text}', '{txb_address2.Text}', '{txb_address3.Text}', '{txb_postcode.Text}')";
+            }
+            else
+            {
+                sql = $"UPDATE hospital SET hospitalName = '{txb_hName.Text}', addressLine1 = '{txb_address1.Text}', addressLine2 = '{txb_address2.Text}', addressLine3 = '{txb_address3.Text}', postcode = '{txb_postcode.Text}' WHERE hospitalID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
+        }
     }
 }
