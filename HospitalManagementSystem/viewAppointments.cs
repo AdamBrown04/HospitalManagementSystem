@@ -107,7 +107,7 @@ namespace HospitalManagementSystem
 
             if (isNewForm)
             {
-                string patientID = cb_pName.Text.Substring(0, 1);
+                string patientID = cb_pName.Text.Substring(0,1);
                 string hospitalID = cb_hName.Text.Substring(0,1);
 
                 sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}')";

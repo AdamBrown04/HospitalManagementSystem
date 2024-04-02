@@ -69,5 +69,10 @@ namespace HospitalManagementSystem
                 isNewForm = true;
             }
         }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
