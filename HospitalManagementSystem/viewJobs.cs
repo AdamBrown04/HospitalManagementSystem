@@ -47,13 +47,20 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
-                if(recordIDnumber < 2)
+                if (recordIDnumber < 2)
                 {
                     recordIDnumber += 1;
                 }
                 else
                 {
                     recordIDnumber += 4;
+                }
+
+                List<string> allDepartments = GetDepartments();
+
+                foreach (string department in allDepartments)
+                {
+                    cmb_departmentName.Items.Add(department);
                 }
                 string sql = $"SELECT * FROM {tName} INNER JOIN department ON (department.departmentID  = jobs.departmentID) WHERE jobsID = '{recordIDnumber}'";
 
@@ -66,14 +73,94 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     txb_jobName.Text = $"{reader["jobName"]}";
-                    txb_departmentName.Text = $"{reader["departmentName"]}";
+                    cmb_departmentName.Text = $"{reader["departmentName"]}";
                 }
                 recordIDnumber -= 1;
             }
             else
             {
                 isNewForm = true;
+
+                
             }
+        }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            {
+                sql = $"INSERT INTO jobs (jobsID, departmentID, jobName) VALUES (NULL, {cmb_departmentName.Text.Substring(0,1)} ,'{txb_jobName.Text}')";
+            }
+            else
+            {
+                sql = $"UPDATE jobs SET departmentID = '{cmb_departmentName.Text.Substring(0,1)}', jobName = '{txb_jobName.Text}' WHERE jobsID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
+        }
+
+        private List<string> GetDepartments()
+        {
+            List<string> departments = new List<string>();
+            string idDepartments;
+
+            string sql = "SELECT * FROM department";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idDepartments = $"{reader["departmentID"]}-{reader["departmentName"]}";
+                departments.Add(idDepartments);
+            }
+
+            return departments;
         }
     }
 }

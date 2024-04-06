@@ -31,9 +31,9 @@
             lbl_jobName = new Label();
             txb_jobName = new TextBox();
             lbl_departmentName = new Label();
-            txb_departmentName = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
+            cmb_departmentName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_jobName
@@ -61,13 +61,6 @@
             lbl_departmentName.TabIndex = 2;
             lbl_departmentName.Text = "department:";
             // 
-            // txb_departmentName
-            // 
-            txb_departmentName.Location = new Point(101, 60);
-            txb_departmentName.Name = "txb_departmentName";
-            txb_departmentName.Size = new Size(255, 27);
-            txb_departmentName.TabIndex = 3;
-            // 
             // btn_saveChanges
             // 
             btn_saveChanges.Location = new Point(5, 104);
@@ -76,6 +69,7 @@
             btn_saveChanges.TabIndex = 4;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -87,14 +81,22 @@
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
             // 
+            // cmb_departmentName
+            // 
+            cmb_departmentName.FormattingEnabled = true;
+            cmb_departmentName.Location = new Point(101, 59);
+            cmb_departmentName.Name = "cmb_departmentName";
+            cmb_departmentName.Size = new Size(255, 28);
+            cmb_departmentName.TabIndex = 6;
+            // 
             // viewJobs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(362, 227);
+            Controls.Add(cmb_departmentName);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
-            Controls.Add(txb_departmentName);
             Controls.Add(lbl_departmentName);
             Controls.Add(txb_jobName);
             Controls.Add(lbl_jobName);
@@ -111,8 +113,8 @@
         private Label lbl_jobName;
         private TextBox txb_jobName;
         private Label lbl_departmentName;
-        private TextBox txb_departmentName;
         private Button btn_saveChanges;
         private Button btn_return;
+        private ComboBox cmb_departmentName;
     }
 }

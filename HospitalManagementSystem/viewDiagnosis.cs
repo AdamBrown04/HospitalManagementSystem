@@ -72,6 +72,7 @@ namespace HospitalManagementSystem
             {
                 isNewForm = true;
 
+
                 List<string> allUsers = GetNames();
 
                 foreach (string user in allUsers)
@@ -172,8 +173,8 @@ namespace HospitalManagementSystem
 
     private List<string> GetDoctors()
     {
-        List<string> hospitals = new List<string>();
-        string idHospital;
+        List<string> doctors = new List<string>();
+        string idDoctors;
 
         string sql = "SELECT staffID, sFirstName, sLastName FROM staff WHERE accessLevel = 5";
 
@@ -185,11 +186,11 @@ namespace HospitalManagementSystem
 
         while (reader.Read())
         {
-            idHospital = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
-            hospitals.Add(idHospital);
+            idDoctors = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
+            doctors.Add(idDoctors);
         }
 
-        return hospitals;
+        return doctors;
     }
 }
 }
