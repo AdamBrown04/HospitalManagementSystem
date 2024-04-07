@@ -145,6 +145,7 @@
             btn_saveChanges.TabIndex = 12;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -199,7 +200,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(439, 469);
+            ClientSize = new Size(439, 470);
             Controls.Add(lbl_address3);
             Controls.Add(lbl_address2);
             Controls.Add(txb_address3);

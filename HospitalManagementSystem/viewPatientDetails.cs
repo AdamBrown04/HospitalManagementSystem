@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.VisualBasic;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,6 +73,67 @@ namespace HospitalManagementSystem
             {
                 isNewForm = true;
             }
+        }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+            string dob = $"{dtb_dob.Value.Year}-{dtb_dob.Value.Month}-{dtb_dob.Value.Day}";
+
+            string[] names = txb_name.Text.Split(null);
+            string fName = names[0];
+            string lName = names[1];
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            {
+                sql = $"INSERT INTO patientdetails (patientDetailsID, firstName, lastName, DoB, email, phoneNumber, gender, addressLine1, addressLine2, addressLine3) VALUES (NULL, '{fName}', '{lName}', '{dob}', '{txb_email.Text}', '{txb_phoneNumber.Text}', '{txb_gender.Text}', '{txb_address1.Text}', '{txb_address2.Text}', '{txb_address3.Text}')";
+            }
+            else
+            {
+                sql = $"UPDATE patientdetails SET firstName = '{fName}', lastName = '{lName}', DoB = '{dob}', email = '{txb_email.Text}', phoneNumber = '{txb_phoneNumber.Text}', gender = '{txb_gender.Text}', addressLine1 = '{txb_address1.Text}', addressLine2 = '{txb_address2.Text}', addressLine3 = '{txb_address3.Text}'  WHERE patientDetailsID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
         }
     }
 }
