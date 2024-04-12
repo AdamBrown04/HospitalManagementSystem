@@ -85,12 +85,13 @@ namespace HospitalManagementSystem
 
             int height = Convert.ToInt32(txb_height.Text);
             int weight = Convert.ToInt32(txb_weight.Text);
+            string patientID = cmb_patient.Text.Substring(0,1);
 
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                sql = $"INSERT INTO patientRecords (patientRecordsID, patientDetailsID, heightCM, weightKG, bloodType) VALUES (NULL, '{height}', '{weight}', '{txb_bloodType.Text}')";
+                sql = $"INSERT INTO patientRecords (patientRecordsID, patientDetailsID, heightCM, weightKG, bloodType) VALUES (NULL, {patientID},'{height}', '{weight}', '{txb_bloodType.Text}')";
             }
             else
             {
