@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lbl_name = new Label();
+            lbl_patient = new Label();
             lbl_height = new Label();
             lbl_weight = new Label();
             lbl_bloodType = new Label();
-            txb_name = new TextBox();
             txb_height = new TextBox();
             txb_weight = new TextBox();
             txb_bloodType = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
+            cmb_patient = new ComboBox();
             SuspendLayout();
             // 
-            // lbl_name
+            // lbl_patient
             // 
-            lbl_name.AutoSize = true;
-            lbl_name.Location = new Point(10, 22);
-            lbl_name.Name = "lbl_name";
-            lbl_name.Size = new Size(49, 20);
-            lbl_name.TabIndex = 0;
-            lbl_name.Text = "name:";
+            lbl_patient.AutoSize = true;
+            lbl_patient.Location = new Point(10, 22);
+            lbl_patient.Name = "lbl_patient";
+            lbl_patient.Size = new Size(59, 20);
+            lbl_patient.TabIndex = 0;
+            lbl_patient.Text = "patient:";
             // 
             // lbl_height
             // 
@@ -72,16 +72,9 @@
             lbl_bloodType.AutoSize = true;
             lbl_bloodType.Location = new Point(10, 129);
             lbl_bloodType.Name = "lbl_bloodType";
-            lbl_bloodType.Size = new Size(75, 20);
+            lbl_bloodType.Size = new Size(85, 20);
             lbl_bloodType.TabIndex = 3;
-            lbl_bloodType.Text = "diagnosis:";
-            // 
-            // txb_name
-            // 
-            txb_name.Location = new Point(65, 22);
-            txb_name.Name = "txb_name";
-            txb_name.Size = new Size(376, 27);
-            txb_name.TabIndex = 4;
+            lbl_bloodType.Text = "blood type:";
             // 
             // txb_height
             // 
@@ -99,9 +92,9 @@
             // 
             // txb_bloodType
             // 
-            txb_bloodType.Location = new Point(91, 129);
+            txb_bloodType.Location = new Point(101, 129);
             txb_bloodType.Name = "txb_bloodType";
-            txb_bloodType.Size = new Size(350, 27);
+            txb_bloodType.Size = new Size(340, 27);
             txb_bloodType.TabIndex = 7;
             // 
             // btn_saveChanges
@@ -112,6 +105,7 @@
             btn_saveChanges.TabIndex = 10;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -123,21 +117,29 @@
             btn_return.UseVisualStyleBackColor = true;
             btn_return.Click += btn_return_Click;
             // 
+            // cmb_patient
+            // 
+            cmb_patient.FormattingEnabled = true;
+            cmb_patient.Location = new Point(74, 19);
+            cmb_patient.Name = "cmb_patient";
+            cmb_patient.Size = new Size(368, 28);
+            cmb_patient.TabIndex = 12;
+            // 
             // viewPatientRecord
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(453, 304);
+            Controls.Add(cmb_patient);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_bloodType);
             Controls.Add(txb_weight);
             Controls.Add(txb_height);
-            Controls.Add(txb_name);
             Controls.Add(lbl_bloodType);
             Controls.Add(lbl_weight);
             Controls.Add(lbl_height);
-            Controls.Add(lbl_name);
+            Controls.Add(lbl_patient);
             Name = "viewPatientRecord";
             Text = "viewPatientRecord";
             FormClosed += viewPatientRecord_FormClosed;
@@ -148,15 +150,15 @@
 
         #endregion
 
-        private Label lbl_name;
+        private Label lbl_patient;
         private Label lbl_height;
         private Label lbl_weight;
         private Label lbl_bloodType;
-        private TextBox txb_name;
         private TextBox txb_height;
         private TextBox txb_weight;
         private TextBox txb_bloodType;
         private Button btn_saveChanges;
         private Button btn_return;
+        private ComboBox cmb_patient;
     }
 }

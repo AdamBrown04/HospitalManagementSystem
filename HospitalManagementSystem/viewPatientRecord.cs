@@ -47,6 +47,7 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
+                cmb_patient.Enabled = false;
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID = patientRecords.patientDetailsID) WHERE patientRecordsID = '{recordIDnumber}'";
 
@@ -58,7 +59,7 @@ namespace HospitalManagementSystem
 
                 while (reader.Read())
                 {
-                    txb_name.Text = $"{reader["firstName"]} {reader["lastName"]}";
+                    cmb_patient.Text = $"{reader["patientRecordsID"]}-{reader["firstName"]} {reader["lastName"]}";
                     txb_height.Text = $"{reader["heightCM"]}";
                     txb_weight.Text = $"{reader["weightKG"]}";
                     txb_bloodType.Text = $"{reader["bloodType"]}";
@@ -68,7 +69,94 @@ namespace HospitalManagementSystem
             else
             {
                 isNewForm = true;
+
+                List<string> allUsers = GetName();
+
+                foreach (string user in allUsers)
+                {
+                    cmb_patient.Items.Add(user);
+                }
             }
+        }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            {
+                string patientID = cmb_patient.Text.Substring(0, 1);
+
+                sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis.Text}')";
+            }
+            else
+            {
+                sql = $"UPDATE diagnosis SET staffID = '{txb_weight}', diagnosisinformation = '{txb_height.Text}' WHERE diagnosisID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
+
+        }
+
+        private List<string> GetNames()
+        {
+            List<string> names = new List<string>();
+            string idName;
+
+            string sql = "SELECT patientDetailsID, firstName, lastName FROM patientDetails";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idName = $"{reader["patientDetailsID"]}-{reader["firstName"]} {reader["lastName"]}";
+                names.Add(idName);
+            }
+
+            return names;
         }
     }
 }
