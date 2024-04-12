@@ -59,8 +59,8 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     txb_testID.Text = $"{reader["testID"]}";
-                    txb_sName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
-                    txb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
+                    cmb_sName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
+                    cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
                     txb_testName.Text = $"{reader["testName"]}";
                     txb_testResults.Text = $"{reader["testResults"]}";
                 }
@@ -69,7 +69,70 @@ namespace HospitalManagementSystem
             else
             {
                 isNewForm = true;
+
+                List<string> allUsers = GetNames();
+
+                foreach (string user in allUsers)
+                {
+                    cmb_pName.Items.Add(user);
+                }
+
+
+                List<string> doctors = GetDoctors();
+                foreach (string doctor in doctors)
+                {
+                    cmb_sName.Items.Add(doctor);
+                }
             }
+        }
+
+        private void btn_saveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private List<string> GetNames()
+        {
+            List<string> names = new List<string>();
+            string idName;
+
+            string sql = "SELECT patientDetailsID, firstName, lastName FROM patientDetails";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idName = $"{reader["patientDetailsID"]}-{reader["firstName"]} {reader["lastName"]}";
+                names.Add(idName);
+            }
+
+            return names;
+        }
+
+        private List<string> GetDoctors()
+        {
+            List<string> doctors = new List<string>();
+            string idDoctors;
+
+            string sql = "SELECT staffID, sFirstName, sLastName FROM staff WHERE accessLevel = 5";
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idDoctors = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
+                doctors.Add(idDoctors);
+            }
+
+            return doctors;
         }
     }
 }

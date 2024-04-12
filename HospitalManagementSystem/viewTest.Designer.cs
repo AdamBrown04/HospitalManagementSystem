@@ -33,13 +33,13 @@
             lbl_testResults = new Label();
             lbl_patientID = new Label();
             txb_testID = new TextBox();
-            txb_sName = new TextBox();
-            txb_pName = new TextBox();
             txb_testResults = new TextBox();
             btn_saveChanges = new Button();
             btn_return = new Button();
             txb_testName = new TextBox();
             lbl_testName = new Label();
+            cmb_sName = new ComboBox();
+            cmb_pName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_testID
@@ -80,24 +80,11 @@
             // 
             // txb_testID
             // 
+            txb_testID.Enabled = false;
             txb_testID.Location = new Point(74, 19);
             txb_testID.Name = "txb_testID";
             txb_testID.Size = new Size(366, 27);
             txb_testID.TabIndex = 4;
-            // 
-            // txb_sName
-            // 
-            txb_sName.Location = new Point(100, 61);
-            txb_sName.Name = "txb_sName";
-            txb_sName.Size = new Size(340, 27);
-            txb_sName.TabIndex = 5;
-            // 
-            // txb_pName
-            // 
-            txb_pName.Location = new Point(118, 98);
-            txb_pName.Name = "txb_pName";
-            txb_pName.Size = new Size(322, 27);
-            txb_pName.TabIndex = 6;
             // 
             // txb_testResults
             // 
@@ -115,6 +102,7 @@
             btn_saveChanges.TabIndex = 8;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -142,18 +130,34 @@
             lbl_testName.TabIndex = 11;
             lbl_testName.Text = "test name:";
             // 
+            // cmb_sName
+            // 
+            cmb_sName.FormattingEnabled = true;
+            cmb_sName.Location = new Point(100, 61);
+            cmb_sName.Name = "cmb_sName";
+            cmb_sName.Size = new Size(340, 28);
+            cmb_sName.TabIndex = 12;
+            // 
+            // cmb_pName
+            // 
+            cmb_pName.FormattingEnabled = true;
+            cmb_pName.Location = new Point(118, 98);
+            cmb_pName.Name = "cmb_pName";
+            cmb_pName.Size = new Size(322, 28);
+            cmb_pName.TabIndex = 13;
+            // 
             // viewTest
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 506);
+            Controls.Add(cmb_pName);
+            Controls.Add(cmb_sName);
             Controls.Add(lbl_testName);
             Controls.Add(txb_testName);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
             Controls.Add(txb_testResults);
-            Controls.Add(txb_pName);
-            Controls.Add(txb_sName);
             Controls.Add(txb_testID);
             Controls.Add(lbl_patientID);
             Controls.Add(lbl_testResults);
@@ -174,12 +178,12 @@
         private Label lbl_testResults;
         private Label lbl_patientID;
         private TextBox txb_testID;
-        private TextBox txb_sName;
-        private TextBox txb_pName;
         private TextBox txb_testResults;
         private Button btn_saveChanges;
         private Button btn_return;
         private TextBox txb_testName;
         private Label lbl_testName;
+        private ComboBox cmb_sName;
+        private ComboBox cmb_pName;
     }
 }
