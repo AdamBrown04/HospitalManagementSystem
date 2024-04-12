@@ -70,7 +70,7 @@ namespace HospitalManagementSystem
             {
                 isNewForm = true;
 
-                List<string> allUsers = GetName();
+                List<string> allUsers = GetNames();
 
                 foreach (string user in allUsers)
                 {
@@ -83,17 +83,18 @@ namespace HospitalManagementSystem
         {
             string sql = "";
 
+            int height = Convert.ToInt32(txb_height.Text);
+            int weight = Convert.ToInt32(txb_weight.Text);
+
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                string patientID = cmb_patient.Text.Substring(0, 1);
-
-                sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis.Text}')";
+                sql = $"INSERT INTO patientRecords (patientRecordsID, patientDetailsID, heightCM, weightKG, bloodType) VALUES (NULL, '{height}', '{weight}', '{txb_bloodType.Text}')";
             }
             else
             {
-                sql = $"UPDATE diagnosis SET staffID = '{txb_weight}', diagnosisinformation = '{txb_height.Text}' WHERE diagnosisID = {recordIDnumber}";
+                sql = $"UPDATE patientRecords SET weightKG = '{weight}', heightCM = '{height}', bloodType = '{txb_bloodType.Text}' WHERE patientRecordsID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
