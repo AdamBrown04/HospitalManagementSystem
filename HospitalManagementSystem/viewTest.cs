@@ -17,6 +17,8 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
+        string staffID;
+        string patientID;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -47,6 +49,9 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
+                cmb_pName.Enabled = false;
+                cmb_sName.Enabled = false;
+
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN staff ON (staff.staffID = test.staffID) INNER JOIN patientRecords ON (patientRecords.patientRecordsID = test.patientRecordsID) INNER JOIN patientDetails ON (patientDetails.patientDetailsID = patientRecords.patientDetailsID) WHERE testID = '{recordIDnumber}'";
 
@@ -63,6 +68,8 @@ namespace HospitalManagementSystem
                     cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
                     txb_testName.Text = $"{reader["testName"]}";
                     txb_testResults.Text = $"{reader["testResults"]}";
+                    patientID = $"{reader["patientRecordsID"]}";
+                    staffID = $"{reader["staffID"]}";
                 }
                 recordIDnumber -= 1;
             }
@@ -78,16 +85,72 @@ namespace HospitalManagementSystem
                 }
 
 
-                List<string> doctors = GetDoctors();
-                foreach (string doctor in doctors)
+                List<string> staff = GetStaff();
+                foreach (string staffMember in staff)
                 {
-                    cmb_sName.Items.Add(doctor);
+                    cmb_sName.Items.Add(staffMember);
                 }
             }
         }
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
+            
+
+            string sql = "";
+
+            recordIDnumber += 1;
+
+            if (isNewForm)
+            {
+                staffID = cmb_sName.Text.Substring(0, 1);
+                patientID = cmb_pName.Text.Substring(0, 1);
+
+                sql = $"INSERT INTO test (testID, staffID, patientRecordsID, testResults, testName) VALUES (NULL, '{staffID}', '{patientID}', '{txb_testResults.Text}', '{txb_testName.Text}')";
+            }
+            else
+            {
+                sql = $"UPDATE test SET staffID = '{staffID}', patientRecordsID = '{patientID}', testResults = '{txb_testResults.Text}', testName = '{txb_testName.Text}' WHERE testID = {recordIDnumber}";
+            }
+
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connectionString;
+            con.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+
+
+
+            if (isNewForm)
+            {
+                adapter.InsertCommand = cmd;
+                int rows = adapter.InsertCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Data insert failed");
+                }
+            }
+            else
+            {
+                adapter.UpdateCommand = cmd;
+                int rows = adapter.UpdateCommand.ExecuteNonQuery();
+
+                if (rows != -1)
+                {
+                    btn_return_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Update failed");
+                }
+            }
+
+            recordIDnumber -= 1;
 
         }
 
@@ -113,12 +176,12 @@ namespace HospitalManagementSystem
             return names;
         }
 
-        private List<string> GetDoctors()
+        private List<string> GetStaff()
         {
             List<string> doctors = new List<string>();
             string idDoctors;
 
-            string sql = "SELECT staffID, sFirstName, sLastName FROM staff WHERE accessLevel = 5";
+            string sql = "SELECT staffID, sFirstName, sLastName FROM staff WHERE accessLevel = 8 OR accessLevel = 9";
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
