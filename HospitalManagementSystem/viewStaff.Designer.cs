@@ -30,9 +30,7 @@
         {
             lbl_name = new Label();
             txb_name = new TextBox();
-            txb_job = new TextBox();
             lbl_job = new Label();
-            txb_department = new TextBox();
             lbl_department = new Label();
             lbl_DoB = new Label();
             lbl_address1 = new Label();
@@ -44,12 +42,15 @@
             btn_saveChanges = new Button();
             btn_return = new Button();
             lbl_accessLevel = new Label();
-            txb_accessLevel = new TextBox();
             dt_dob = new DateTimePicker();
             lbl_address2 = new Label();
             lbl_address3 = new Label();
             txb_address2 = new TextBox();
             txb_address3 = new TextBox();
+            cmb_job = new ComboBox();
+            cmb_department = new ComboBox();
+            nud_accessLevel = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)nud_accessLevel).BeginInit();
             SuspendLayout();
             // 
             // lbl_name
@@ -68,13 +69,6 @@
             txb_name.Size = new Size(287, 27);
             txb_name.TabIndex = 1;
             // 
-            // txb_job
-            // 
-            txb_job.Location = new Point(67, 42);
-            txb_job.Name = "txb_job";
-            txb_job.Size = new Size(287, 27);
-            txb_job.TabIndex = 2;
-            // 
             // lbl_job
             // 
             lbl_job.AutoSize = true;
@@ -83,13 +77,6 @@
             lbl_job.Size = new Size(34, 20);
             lbl_job.TabIndex = 3;
             lbl_job.Text = "job:";
-            // 
-            // txb_department
-            // 
-            txb_department.Location = new Point(108, 75);
-            txb_department.Name = "txb_department";
-            txb_department.Size = new Size(246, 27);
-            txb_department.TabIndex = 4;
             // 
             // lbl_department
             // 
@@ -165,6 +152,7 @@
             btn_saveChanges.TabIndex = 14;
             btn_saveChanges.Text = "save changes";
             btn_saveChanges.UseVisualStyleBackColor = true;
+            btn_saveChanges.Click += btn_saveChanges_Click;
             // 
             // btn_return
             // 
@@ -184,13 +172,6 @@
             lbl_accessLevel.Size = new Size(89, 20);
             lbl_accessLevel.TabIndex = 16;
             lbl_accessLevel.Text = "access level:";
-            // 
-            // txb_accessLevel
-            // 
-            txb_accessLevel.Location = new Point(105, 334);
-            txb_accessLevel.Name = "txb_accessLevel";
-            txb_accessLevel.Size = new Size(249, 27);
-            txb_accessLevel.TabIndex = 17;
             // 
             // dt_dob
             // 
@@ -231,17 +212,45 @@
             txb_address3.Size = new Size(227, 27);
             txb_address3.TabIndex = 22;
             // 
+            // cmb_job
+            // 
+            cmb_job.FormattingEnabled = true;
+            cmb_job.Location = new Point(52, 42);
+            cmb_job.Name = "cmb_job";
+            cmb_job.Size = new Size(302, 28);
+            cmb_job.TabIndex = 23;
+            // 
+            // cmb_department
+            // 
+            cmb_department.FormattingEnabled = true;
+            cmb_department.Location = new Point(108, 75);
+            cmb_department.Name = "cmb_department";
+            cmb_department.Size = new Size(246, 28);
+            cmb_department.TabIndex = 24;
+            // 
+            // nud_accessLevel
+            // 
+            nud_accessLevel.Location = new Point(108, 335);
+            nud_accessLevel.Maximum = new decimal(new int[] { 9, 0, 0, 0 });
+            nud_accessLevel.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_accessLevel.Name = "nud_accessLevel";
+            nud_accessLevel.Size = new Size(246, 27);
+            nud_accessLevel.TabIndex = 25;
+            nud_accessLevel.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // viewStaff
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(366, 501);
+            Controls.Add(nud_accessLevel);
+            Controls.Add(cmb_department);
+            Controls.Add(cmb_job);
             Controls.Add(txb_address3);
             Controls.Add(txb_address2);
             Controls.Add(lbl_address3);
             Controls.Add(lbl_address2);
             Controls.Add(dt_dob);
-            Controls.Add(txb_accessLevel);
             Controls.Add(lbl_accessLevel);
             Controls.Add(btn_return);
             Controls.Add(btn_saveChanges);
@@ -253,15 +262,14 @@
             Controls.Add(lbl_address1);
             Controls.Add(lbl_DoB);
             Controls.Add(lbl_department);
-            Controls.Add(txb_department);
             Controls.Add(lbl_job);
-            Controls.Add(txb_job);
             Controls.Add(txb_name);
             Controls.Add(lbl_name);
             Name = "viewStaff";
             Text = "view staff";
             FormClosed += viewStaff_FormClosed;
             Load += viewStaff_Load;
+            ((System.ComponentModel.ISupportInitialize)nud_accessLevel).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -270,9 +278,7 @@
 
         private Label lbl_name;
         private TextBox txb_name;
-        private TextBox txb_job;
         private Label lbl_job;
-        private TextBox txb_department;
         private Label lbl_department;
         private Label lbl_DoB;
         private Label lbl_address1;
@@ -284,11 +290,13 @@
         private Button btn_saveChanges;
         private Button btn_return;
         private Label lbl_accessLevel;
-        private TextBox txb_accessLevel;
         private DateTimePicker dt_dob;
         private Label lbl_address2;
         private Label lbl_address3;
         private TextBox txb_address2;
         private TextBox txb_address3;
+        private ComboBox cmb_job;
+        private ComboBox cmb_department;
+        private NumericUpDown nud_accessLevel;
     }
 }
