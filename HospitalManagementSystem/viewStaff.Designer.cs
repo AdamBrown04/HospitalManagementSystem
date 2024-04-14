@@ -31,7 +31,7 @@
             lbl_name = new Label();
             txb_name = new TextBox();
             lbl_job = new Label();
-            lbl_department = new Label();
+            lbl_hospitalName = new Label();
             lbl_DoB = new Label();
             lbl_address1 = new Label();
             txb_address1 = new TextBox();
@@ -48,8 +48,10 @@
             txb_address2 = new TextBox();
             txb_address3 = new TextBox();
             cmb_job = new ComboBox();
-            cmb_department = new ComboBox();
+            cmb_hospitalName = new ComboBox();
             nud_accessLevel = new NumericUpDown();
+            lbl_password = new Label();
+            txb_password = new TextBox();
             ((System.ComponentModel.ISupportInitialize)nud_accessLevel).BeginInit();
             SuspendLayout();
             // 
@@ -78,14 +80,14 @@
             lbl_job.TabIndex = 3;
             lbl_job.Text = "job:";
             // 
-            // lbl_department
+            // lbl_hospitalName
             // 
-            lbl_department.AutoSize = true;
-            lbl_department.Location = new Point(12, 78);
-            lbl_department.Name = "lbl_department";
-            lbl_department.Size = new Size(90, 20);
-            lbl_department.TabIndex = 6;
-            lbl_department.Text = "department:";
+            lbl_hospitalName.AutoSize = true;
+            lbl_hospitalName.Location = new Point(12, 78);
+            lbl_hospitalName.Name = "lbl_hospitalName";
+            lbl_hospitalName.Size = new Size(65, 20);
+            lbl_hospitalName.TabIndex = 6;
+            lbl_hospitalName.Text = "hospital:";
             // 
             // lbl_DoB
             // 
@@ -140,13 +142,14 @@
             // txb_phoneNumber
             // 
             txb_phoneNumber.Location = new Point(127, 289);
+            txb_phoneNumber.MaxLength = 11;
             txb_phoneNumber.Name = "txb_phoneNumber";
             txb_phoneNumber.Size = new Size(227, 27);
             txb_phoneNumber.TabIndex = 13;
             // 
             // btn_saveChanges
             // 
-            btn_saveChanges.Location = new Point(10, 380);
+            btn_saveChanges.Location = new Point(10, 405);
             btn_saveChanges.Name = "btn_saveChanges";
             btn_saveChanges.Size = new Size(344, 53);
             btn_saveChanges.TabIndex = 14;
@@ -156,7 +159,7 @@
             // 
             // btn_return
             // 
-            btn_return.Location = new Point(10, 439);
+            btn_return.Location = new Point(10, 464);
             btn_return.Name = "btn_return";
             btn_return.Size = new Size(344, 53);
             btn_return.TabIndex = 15;
@@ -220,13 +223,13 @@
             cmb_job.Size = new Size(302, 28);
             cmb_job.TabIndex = 23;
             // 
-            // cmb_department
+            // cmb_hospitalName
             // 
-            cmb_department.FormattingEnabled = true;
-            cmb_department.Location = new Point(108, 75);
-            cmb_department.Name = "cmb_department";
-            cmb_department.Size = new Size(246, 28);
-            cmb_department.TabIndex = 24;
+            cmb_hospitalName.FormattingEnabled = true;
+            cmb_hospitalName.Location = new Point(108, 75);
+            cmb_hospitalName.Name = "cmb_hospitalName";
+            cmb_hospitalName.Size = new Size(246, 28);
+            cmb_hospitalName.TabIndex = 24;
             // 
             // nud_accessLevel
             // 
@@ -238,13 +241,31 @@
             nud_accessLevel.TabIndex = 25;
             nud_accessLevel.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // lbl_password
+            // 
+            lbl_password.AutoSize = true;
+            lbl_password.Location = new Point(12, 371);
+            lbl_password.Name = "lbl_password";
+            lbl_password.Size = new Size(75, 20);
+            lbl_password.TabIndex = 26;
+            lbl_password.Text = "password:";
+            // 
+            // txb_password
+            // 
+            txb_password.Location = new Point(90, 371);
+            txb_password.Name = "txb_password";
+            txb_password.Size = new Size(264, 27);
+            txb_password.TabIndex = 27;
+            // 
             // viewStaff
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(366, 501);
+            ClientSize = new Size(366, 526);
+            Controls.Add(txb_password);
+            Controls.Add(lbl_password);
             Controls.Add(nud_accessLevel);
-            Controls.Add(cmb_department);
+            Controls.Add(cmb_hospitalName);
             Controls.Add(cmb_job);
             Controls.Add(txb_address3);
             Controls.Add(txb_address2);
@@ -261,7 +282,7 @@
             Controls.Add(txb_address1);
             Controls.Add(lbl_address1);
             Controls.Add(lbl_DoB);
-            Controls.Add(lbl_department);
+            Controls.Add(lbl_hospitalName);
             Controls.Add(lbl_job);
             Controls.Add(txb_name);
             Controls.Add(lbl_name);
@@ -279,7 +300,7 @@
         private Label lbl_name;
         private TextBox txb_name;
         private Label lbl_job;
-        private Label lbl_department;
+        private Label lbl_hospitalName;
         private Label lbl_DoB;
         private Label lbl_address1;
         private TextBox txb_address1;
@@ -296,7 +317,9 @@
         private TextBox txb_address2;
         private TextBox txb_address3;
         private ComboBox cmb_job;
-        private ComboBox cmb_department;
+        private ComboBox cmb_hospitalName;
         private NumericUpDown nud_accessLevel;
+        private Label lbl_password;
+        private TextBox txb_password;
     }
 }

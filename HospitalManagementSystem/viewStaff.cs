@@ -46,7 +46,7 @@ namespace HospitalManagementSystem
             if (recordIDnumber != -1)
             {
                 recordIDnumber += 1;
-                string sql = $"SELECT * FROM {tName} INNER JOIN jobs ON (jobs.jobsID = staff.jobID) INNER JOIN department ON (department.departmentID = jobs.departmentID) WHERE staffID = '{recordIDnumber}'";
+                string sql = $"SELECT * FROM {tName} INNER JOIN jobs ON (jobs.jobsID = staff.jobID) INNER JOIN hospital ON (hospital.hospitalID = staff.hospitalID) WHERE staffID = '{recordIDnumber}'";
 
                 MySqlConnection con = new MySqlConnection();
                 con.ConnectionString = connectionString;
@@ -57,8 +57,8 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     txb_name.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
-                    cmb_job.Text = $"{reader["jobName"]}";
-                    cmb_department.Text = $"{reader["departmentName"]}";
+                    cmb_job.Text = $"{reader["jobID"]}-{reader["jobName"]}";
+                    cmb_hospitalName.Text = $"{reader["hospitalID"]}-{reader["hospitalName"]}";
                     dt_dob.Text = $"{reader["dob"]}";
                     txb_phoneNumber.Text = $"{reader["phoneNumber"]}";
                     txb_address1.Text = $"{reader["addressLine1"]}";
@@ -66,6 +66,7 @@ namespace HospitalManagementSystem
                     txb_address3.Text = $"{reader["addressLine3"]}";
                     txb_email.Text = $"{reader["email"]}";
                     nud_accessLevel.Text = $"{reader["accessLevel"]}";
+                    txb_password.Text = $"{reader["password"]}";
                 }
                 recordIDnumber -= 1;
             }
@@ -74,10 +75,10 @@ namespace HospitalManagementSystem
                 isNewForm = true;
             }
 
-            List<string> departments = GetDepartments();
-            foreach (string department in departments)
+            List<string> hospitals = GetHospitals();
+            foreach (string hospital in hospitals)
             {
-                cmb_department.Items.Add(department);
+                cmb_hospitalName.Items.Add(hospital);
             }
 
             List<string> jobs = GetJobs();
@@ -97,13 +98,21 @@ namespace HospitalManagementSystem
             string fName = names[0];
             string lName = names[1];
 
+            string uName = lName + fName;
+
+            string jobID = cmb_job.Text.Substring(0,1);
+            string hospitalID = cmb_hospitalName.Text.Substring(0,1);
+
+            string dob = $"{dt_dob.Value.Year}-{dt_dob.Value.Month}-{dt_dob.Value.Day}";
+
+
             if (isNewForm)
             {
-                sql = $"INSERT INTO staff (staffID, jobID, hospitalID, sFirstName, sLastName, DoB, phoneNumber, addressLine1, addressLine2, addressLine3, ) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis.Text}')";
+                sql = $"INSERT INTO staff (staffID, jobID, hospitalID, sFirstName, sLastName, DoB, email, phoneNumber, addressLine1, addressLine2, addressLine3, username, password, accessLevel) VALUES (NULL, '{jobID}', '{hospitalID}', '{fName}', '{lName}', '{dob}', '{txb_phoneNumber.Text}', '{txb_email.Text}', '{txb_address1.Text}', '{txb_address2.Text}', '{txb_address3.Text}', '{uName}', '{txb_password.Text}', '{nud_accessLevel.Value}')";
             }
             else
             {
-                sql = $"UPDATE staff SET staffID = '{staffID}', diagnosisinformation = '{txb_diagnosis.Text}' WHERE staffID = {recordIDnumber}";
+                sql = $"UPDATE staff SET jobID = '{jobID}', hospitalID = '{hospitalID}', sFirstName = '{fName}', sLastName = '{lName}', DoB = '{dob}', email = '{txb_email.Text}', phoneNumber = '{txb_phoneNumber.Text}', addressLine1 = '{txb_address1.Text}', addressLine2 = '{txb_address2.Text}', addressLine3 = '{txb_address3.Text}', accessLevel = '{nud_accessLevel.Value}', password = '{txb_password.Text}' WHERE staffID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
@@ -169,12 +178,12 @@ namespace HospitalManagementSystem
             return jobs;
         }
 
-        private List<string> GetDepartments()
+        private List<string> GetHospitals()
         {
             List<string> departments = new List<string>();
             string department;
 
-            string sql = "SELECT * FROM department";
+            string sql = "SELECT hospitalID, hospitalName FROM hospital";
 
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connectionString;
@@ -184,7 +193,7 @@ namespace HospitalManagementSystem
 
             while (reader.Read())
             {
-                department = $"{reader["departmentID"]}-{reader["departmentName"]}";
+                department = $"{reader["hospitalID"]}-{reader["hospitalName"]}";
                 departments.Add(department);
             }
 
