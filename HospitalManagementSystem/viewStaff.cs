@@ -108,7 +108,7 @@ namespace HospitalManagementSystem
 
             if (isNewForm)
             {
-                sql = $"INSERT INTO staff (staffID, jobID, hospitalID, sFirstName, sLastName, DoB, email, phoneNumber, addressLine1, addressLine2, addressLine3, username, password, accessLevel) VALUES (NULL, '{jobID}', '{hospitalID}', '{fName}', '{lName}', '{dob}', '{txb_phoneNumber.Text}', '{txb_email.Text}', '{txb_address1.Text}', '{txb_address2.Text}', '{txb_address3.Text}', '{uName}', '{txb_password.Text}', '{nud_accessLevel.Value}')";
+                sql = $"INSERT INTO staff (staffID, jobID, hospitalID, sFirstName, sLastName, DoB, email, phoneNumber, addressLine1, addressLine2, addressLine3, username, password, accessLevel) VALUES (NULL, '{jobID}', '{hospitalID}', '{fName}', '{lName}', '{dob}', '{txb_email.Text}', '{txb_phoneNumber.Text}', '{txb_address1.Text}', '{txb_address2.Text}', '{txb_address3.Text}', '{uName}', '{txb_password.Text}', '{nud_accessLevel.Value}')";
             }
             else
             {
