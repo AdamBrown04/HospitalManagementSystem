@@ -17,8 +17,6 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
-        string staffID;
-        string patientID;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -64,12 +62,10 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     txb_testID.Text = $"{reader["testID"]}";
-                    cmb_sName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
-                    cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
+                    cmb_sName.Text = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
+                    cmb_pName.Text = $"{reader["patientRecordsID"]}-{reader["firstName"]} {reader["lastName"]}";
                     txb_testName.Text = $"{reader["testName"]}";
-                    txb_testResults.Text = $"{reader["testResults"]}";
-                    patientID = $"{reader["patientRecordsID"]}";
-                    staffID = $"{reader["staffID"]}";
+                    txb_testResults.Text = $"{reader["testResults"]}"; 
                 }
                 recordIDnumber -= 1;
             }
@@ -95,17 +91,18 @@ namespace HospitalManagementSystem
 
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
-            
-
             string sql = "";
+
+            string[] patientString = cmb_pName.Text.Split("-");
+            string patientID = patientString[0];
+
+            string[] staffString = cmb_sName.Text.Split("-");
+            string staffID = staffString[0];
 
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                staffID = cmb_sName.Text.Substring(0, 1);
-                patientID = cmb_pName.Text.Substring(0, 1);
-
                 sql = $"INSERT INTO test (testID, staffID, patientRecordsID, testResults, testName) VALUES (NULL, '{staffID}', '{patientID}', '{txb_testResults.Text}', '{txb_testName.Text}')";
             }
             else
