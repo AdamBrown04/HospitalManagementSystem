@@ -17,7 +17,6 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
-        int staffID;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
@@ -61,9 +60,8 @@ namespace HospitalManagementSystem
                 while (reader.Read())
                 {
                     cmb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
-                    cmb_dName.Text = $"{reader["sFirstName"]} {reader["sLastName"]}";
-                    txb_diagnosis.Text = $"{reader["diagnosisInformation"]}";
-                    staffID = Convert.ToInt32(reader["staffID"]);
+                    cmb_dName.Text = $"{reader["staffID"]}-{reader["sFirstName"]} {reader["sLastName"]}";
+                    txb_diagnosis.Text = $"{reader["diagnosisInformation"]}";    
                 }
                 recordIDnumber -= 1;
 
@@ -97,8 +95,11 @@ namespace HospitalManagementSystem
 
             if (isNewForm)
             {
-                string patientID = cmb_pName.Text.Substring(0, 1);
-                staffID = Convert.ToInt32(cmb_dName.Text.Substring(0, 1));
+                string[] patientString = cmb_pName.Text.Split('-');
+                string patientID = patientString[0];
+
+                string[] staffString = cmb_dName.Text.Split("-");
+                staffID = staffString[0];
 
                 sql = $"INSERT INTO diagnosis (diagnosisID, staffID, patientRecordsID, diagnosisinformation) VALUES (NULL, '{staffID}', '{patientID}', '{txb_diagnosis.Text}')";
             }
