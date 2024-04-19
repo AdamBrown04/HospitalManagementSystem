@@ -100,8 +100,11 @@ namespace HospitalManagementSystem
 
             string uName = lName + fName;
 
-            string jobID = cmb_job.Text.Substring(0,1);
-            string hospitalID = cmb_hospitalName.Text.Substring(0,1);
+            string[] jobString = cmb_job.Text.Split('-');
+            string jobID = jobString[0];
+
+            string[] hospitalString = cmb_hospitalName.Text.Split("-");
+            string hospitalID = hospitalString[0];
 
             string dob = $"{dt_dob.Value.Year}-{dt_dob.Value.Month}-{dt_dob.Value.Day}";
 
