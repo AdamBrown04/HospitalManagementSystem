@@ -89,15 +89,18 @@ namespace HospitalManagementSystem
         {
             string sql = "";
 
+            string[] departmentString = cmb_departmentName.Text.Split("-");
+            string departmentID = departmentString[0];
+
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                sql = $"INSERT INTO jobs (jobsID, departmentID, jobName) VALUES (NULL, {cmb_departmentName.Text.Substring(0,1)} ,'{txb_jobName.Text}')";
+                sql = $"INSERT INTO jobs (jobsID, departmentID, jobName) VALUES (NULL, {departmentID} ,'{txb_jobName.Text}')";
             }
             else
             {
-                sql = $"UPDATE jobs SET departmentID = '{cmb_departmentName.Text.Substring(0,1)}', jobName = '{txb_jobName.Text}' WHERE jobsID = {recordIDnumber}";
+                sql = $"UPDATE jobs SET departmentID = '{departmentID}', jobName = '{txb_jobName.Text}' WHERE jobsID = {recordIDnumber}";
             }
 
             MySqlConnection con = new MySqlConnection();
