@@ -50,7 +50,7 @@ namespace HospitalManagementSystem
         {
             if (recordIDnumber != -1)
             {
-                cb_pName.Enabled = false;
+                cmb_pName.Enabled = false;
 
                 recordIDnumber += 1;
                 string sql = $"SELECT * FROM {tName} INNER JOIN patientDetails ON (patientDetails.patientDetailsID  = appointment.patientDetailsID) INNER JOIN hospital ON (hospital.hospitalID  = appointment.hospitalID) WHERE appointmentID = '{recordIDnumber}'";
@@ -63,12 +63,10 @@ namespace HospitalManagementSystem
 
                 while (reader.Read())
                 {
-                    cb_pName.Text = $"{reader["firstName"]} {reader["lastName"]}";
-                    cb_hName.Text = $"{reader["hospitalName"]}";
+                    cmb_pName.Text = $"{reader["patientDetailsID"]}{reader["firstName"]} {reader["lastName"]}";
+                    cmb_hName.Text = $"{reader["hospitalID"]}{reader["hospitalName"]}";
                     dt_date.Text = $"{reader["appointmentDate"]}";
                     dt_time.Text = $"{reader["appointmentTime"]}";
-                    patientID = Convert.ToInt32(reader["patientDetailsID"]);
-                    hospitalID = Convert.ToInt32(reader["hospitalID"]);
                 }
 
                 recordIDnumber -= 1;
@@ -81,7 +79,7 @@ namespace HospitalManagementSystem
 
                 foreach (string user in allUsers)
                 {
-                    cb_pName.Items.Add(user);
+                    cmb_pName.Items.Add(user);
                 }
             }
 
@@ -89,7 +87,7 @@ namespace HospitalManagementSystem
 
             foreach (string hospital in hospitals)
             {
-                cb_hName.Items.Add(hospital);
+                cmb_hName.Items.Add(hospital);
             }
         }
 
@@ -101,15 +99,16 @@ namespace HospitalManagementSystem
             string date = $"{dt_date.Value.Year}-{dt_date.Value.Month}-{dt_date.Value.Day}";
             string time = $"{dt_time.Value.Hour}:{dt_time.Value.Minute}:{dt_time.Value.Second}";
 
-            
+            string[] patientString = cmb_pName.Text.Split("-");
+            string patientID = patientString[0];
+
+            string[] hospitalString = cmb_hName.Text.Split("-");
+            string hospitalID = hospitalString[0];
 
             recordIDnumber += 1;
 
             if (isNewForm)
             {
-                string patientID = cb_pName.Text.Substring(0,1);
-                string hospitalID = cb_hName.Text.Substring(0,1);
-
                 sql = $"INSERT INTO appointment (appointmentID, hospitalID, patientDetailsID, appointmentDate, appointmentTime) VALUES (NULL, '{patientID}', '{hospitalID}', '{date}', '{time}')";
             }
             else

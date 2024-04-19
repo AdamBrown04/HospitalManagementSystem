@@ -36,8 +36,8 @@
             btn_return = new Button();
             dt_date = new DateTimePicker();
             dt_time = new DateTimePicker();
-            cb_pName = new ComboBox();
-            cb_hName = new ComboBox();
+            cmb_pName = new ComboBox();
+            cmb_hName = new ComboBox();
             SuspendLayout();
             // 
             // lbl_Pname
@@ -115,29 +115,29 @@
             dt_time.TabIndex = 13;
             dt_time.Value = new DateTime(2024, 3, 1, 0, 0, 0, 0);
             // 
-            // cb_pName
+            // cmb_pName
             // 
-            cb_pName.FormattingEnabled = true;
-            cb_pName.Location = new Point(127, 9);
-            cb_pName.Name = "cb_pName";
-            cb_pName.Size = new Size(220, 28);
-            cb_pName.TabIndex = 14;
+            cmb_pName.FormattingEnabled = true;
+            cmb_pName.Location = new Point(127, 9);
+            cmb_pName.Name = "cmb_pName";
+            cmb_pName.Size = new Size(220, 28);
+            cmb_pName.TabIndex = 14;
             // 
-            // cb_hName
+            // cmb_hName
             // 
-            cb_hName.FormattingEnabled = true;
-            cb_hName.Location = new Point(127, 54);
-            cb_hName.Name = "cb_hName";
-            cb_hName.Size = new Size(220, 28);
-            cb_hName.TabIndex = 15;
+            cmb_hName.FormattingEnabled = true;
+            cmb_hName.Location = new Point(127, 54);
+            cmb_hName.Name = "cmb_hName";
+            cmb_hName.Size = new Size(220, 28);
+            cmb_hName.TabIndex = 15;
             // 
             // viewAppointments
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(354, 316);
-            Controls.Add(cb_hName);
-            Controls.Add(cb_pName);
+            Controls.Add(cmb_hName);
+            Controls.Add(cmb_pName);
             Controls.Add(dt_time);
             Controls.Add(dt_date);
             Controls.Add(btn_return);
@@ -164,7 +164,7 @@
         private Button btn_return;
         private DateTimePicker dt_date;
         private DateTimePicker dt_time;
-        private ComboBox cb_pName;
-        private ComboBox cb_hName;
+        private ComboBox cmb_pName;
+        private ComboBox cmb_hName;
     }
 }
