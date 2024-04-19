@@ -17,6 +17,7 @@ namespace HospitalManagementSystem
     {
         int recordIDnumber;
         int aLevel;
+        string staffID;
         string uName;
         string tName;
         string connectionString = "server=localhost;uid=root;pwd=Dempsy66Proton;database=hospitalmanagementsystem";
